@@ -4,8 +4,6 @@ const _ = require('lodash');
 const Utils = require('./utils/utils');
 const Constants = require('./utils/constants');
 
-// TODO:: seperate query and path
-
 /**
  * @class FaceitAPI
  * @author Demian <devaccdemiann@gmail.com>
@@ -1115,6 +1113,78 @@ class FaceitAPI {
         const query = _.pick(params, ['name', 'game', 'region', 'type', 'offset', 'limit']);
 
         const endpoint = `/${endpointPrefix}/tournaments`;
+        const url = this._buildUrl(endpoint, query);
+
+        return this._request(url);
+      },
+    };
+  }
+
+  /**
+   * @description Calls related to teams endpoints
+   */
+  get teams() {
+    const endpointPrefix = 'teams';
+
+    return {
+      /**
+       * @description
+       * @function teams.show()
+       * @param {object} params
+       * @param {string} params.team_id
+       * @returns {Object}
+       */
+      show: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.team_id)) Utils._WARN_('Invalid parameter', 'team_id  must be of type: String');
+
+        const endpoint = `/${endpointPrefix}/${params.team_id}`;
+        const url = this._buildUrl(endpoint, {});
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function teams.stats()
+       * @param {object} params
+       * @param {string} params.team_id
+       * @param {string} params.game_id
+       * @returns {Object}
+       */
+      stats: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.team_id)) Utils._WARN_('Invalid parameter', 'team_id  must be of type: String');
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.game_id)) Utils._WARN_('Invalid parameter', 'game_id  must be of type: String');
+
+        const endpoint = `/${endpointPrefix}/${params.team_id}/stats/${params.game_id}`;
+        const url = this._buildUrl(endpoint, {});
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function teams.tournaments()
+       * @param {object} params
+       * @param {string} params.team_id
+       * @param {string} params.game_id
+       * @returns {Object}
+       */
+      tournaments: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.team_id)) Utils._WARN_('Invalid parameter', 'team_id  must be of type: String');
+
+        const query = _.pick(params, ['offset', 'limit']);
+
+        const endpoint = `/${endpointPrefix}/${params.team_id}/tournaments`;
         const url = this._buildUrl(endpoint, query);
 
         return this._request(url);
