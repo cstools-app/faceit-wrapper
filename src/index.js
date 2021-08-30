@@ -1,4 +1,5 @@
 const fetch = require('isomorphic-unfetch');
+const _ = require('lodash');
 
 const Utils = require('./utils/utils');
 const Constants = require('./utils/constants');
@@ -8,7 +9,7 @@ const Constants = require('./utils/constants');
 /**
  * @class FaceitAPI
  * @author Demian <devaccdemiann@gmail.com>
- * @description A Node.js wrapper for the faceit data api with only one dependency. For more accurate up to date documentation visit https://developers.faceit.com/docs/tools/data-api
+ * @description A Node.js wrapper for the faceit data api with only two dependencies. For more accurate up to date documentation visit https://developers.faceit.com/docs/tools/data-api
  * @example
  *     const FaceitAPI = require('wrapper');
  *     const client = new FaceitAPI();
@@ -48,7 +49,7 @@ class FaceitAPI {
         if (Utils.isStringEmpty(params.game)) Utils._WARN_('Invalid parameter', 'game must be of type: String');
 
         const endpoint = `/${endpointPrefix}`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, {});
 
         return this._request(url);
       },
@@ -72,8 +73,10 @@ class FaceitAPI {
         if ('expanded' in params && !Utils.isArray(params.expanded))
           Utils._WARN_('Invalid parameter', 'expanded must be of type: Array[String]');
 
+        const query = _.pick(params, ['expanded']);
+
         const endpoint = `/${endpointPrefix}/${params.championship_id}`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, query);
 
         return this._request(url);
       },
@@ -95,8 +98,10 @@ class FaceitAPI {
         if (Utils.isStringEmpty(params.championship_id))
           Utils._WARN_('Invalid parameter', 'championship_id must be of type: String');
 
+        const query = _.pick(params, ['type', 'offset', 'limit']);
+
         const endpoint = `/${endpointPrefix}/${params.championship_id}/matches`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, query);
 
         return this._request(url);
       },
@@ -118,8 +123,10 @@ class FaceitAPI {
         if (Utils.isStringEmpty(params.championship_id))
           Utils._WARN_('Invalid parameter', 'championship_id must be of type: String');
 
+        const query = _.pick(params, ['offset', 'limit']);
+
         const endpoint = `/${endpointPrefix}/${params.championship_id}/subscriptions`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, query);
 
         return this._request(url);
       },
@@ -145,7 +152,7 @@ class FaceitAPI {
         this._defaults(params);
 
         const endpoint = `/${endpointPrefix}`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, {});
 
         return this._request(url);
       },
@@ -164,7 +171,7 @@ class FaceitAPI {
         if (Utils.isStringEmpty(params.game_id)) Utils._WARN_('Invalid parameter', 'game_id must be of type: String');
 
         const endpoint = `/${endpointPrefix}/${params.game_id}`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, {});
 
         return this._request(url);
       },
@@ -183,7 +190,7 @@ class FaceitAPI {
         if (Utils.isStringEmpty(params.game_id)) Utils._WARN_('Invalid parameter', 'game_id must be of type: String');
 
         const endpoint = `/${endpointPrefix}/${params.game_id}/parent`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, {});
 
         return this._request(url);
       },
@@ -215,8 +222,10 @@ class FaceitAPI {
         if ('expanded' in params && !Utils.isArray(params.expanded))
           Utils._WARN_('Invalid parameter', 'expanded must be of type: Array[String]');
 
+        const query = _.pick(params, ['expanded']);
+
         const endpoint = `/${endpointPrefix}/${params.hub_id}`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, query);
 
         return this._request(url);
       },
@@ -237,8 +246,10 @@ class FaceitAPI {
         // Must exists and be string
         if (Utils.isStringEmpty(params.hub_id)) Utils._WARN_('Invalid parameter', 'hub_id must be of type: String');
 
+        const query = _.pick(params, ['type', 'offset', 'limit']);
+
         const endpoint = `/${endpointPrefix}/${params.hub_id}/matches`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, query);
 
         return this._request(url);
       },
@@ -258,8 +269,10 @@ class FaceitAPI {
         // Must exists and be string
         if (Utils.isStringEmpty(params.hub_id)) Utils._WARN_('Invalid parameter', 'hub_id must be of type: String');
 
+        const query = _.pick(params, ['offset', 'limit']);
+
         const endpoint = `/${endpointPrefix}/${params.hub_id}/members`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, query);
 
         return this._request(url);
       },
@@ -279,8 +292,10 @@ class FaceitAPI {
         // Must exists and be string
         if (Utils.isStringEmpty(params.hub_id)) Utils._WARN_('Invalid parameter', 'hub_id must be of type: String');
 
+        const query = _.pick(params, ['offset', 'limit']);
+
         const endpoint = `/${endpointPrefix}/${params.hub_id}/roles`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, query);
 
         return this._request(url);
       },
@@ -299,7 +314,7 @@ class FaceitAPI {
         if (Utils.isStringEmpty(params.hub_id)) Utils._WARN_('Invalid parameter', 'hub_id must be of type: String');
 
         const endpoint = `/${endpointPrefix}/${params.hub_id}/rules`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, {});
 
         return this._request(url);
       },
@@ -319,8 +334,10 @@ class FaceitAPI {
         // Must exists and be string
         if (Utils.isStringEmpty(params.hub_id)) Utils._WARN_('Invalid parameter', 'hub_id must be of type: String');
 
+        const query = _.pick(params, ['offset', 'limit']);
+
         const endpoint = `/${endpointPrefix}/${params.hub_id}/stats`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, query);
 
         return this._request(url);
       },
@@ -356,8 +373,10 @@ class FaceitAPI {
             if (Utils.isStringEmpty(params.championship_id))
               Utils._WARN_('Invalid parameter', 'championship_id must be of type: String');
 
+            const query = _.pick(params, ['offset', 'limit']);
+
             const endpoint = `/${endpointPrefix}/${championshipsPrefix}/${params.championship_id}`;
-            const url = this._buildUrl(endpoint, params);
+            const url = this._buildUrl(endpoint, query);
 
             return this._request(url);
           },
@@ -382,8 +401,10 @@ class FaceitAPI {
             // Must exists and be string
             if (Utils.isStringEmpty(params.group_id)) Utils._WARN_('Invalid parameter', 'group_id must be of type: String');
 
+            const query = _.pick(params, ['offset', 'limit']);
+
             const endpoint = `/${endpointPrefix}/${championshipsPrefix}/${params.championship_id}/${groupsPrefix}/${params.group_id}`;
-            const url = this._buildUrl(endpoint, params);
+            const url = this._buildUrl(endpoint, query);
 
             return this._request(url);
           },
@@ -407,8 +428,10 @@ class FaceitAPI {
             // Must exists and be string
             if (Utils.isStringEmpty(params.hub_id)) Utils._WARN_('Invalid parameter', 'hub_id must be of type: String');
 
+            const query = _.pick(params, ['offset', 'limit']);
+
             const endpoint = `/${endpointPrefix}/${championshipsPrefix}/${params.hub_id}`;
-            const url = this._buildUrl(endpoint, params);
+            const url = this._buildUrl(endpoint, query);
 
             return this._request(url);
           },
@@ -428,8 +451,10 @@ class FaceitAPI {
             // Must exists and be string
             if (Utils.isStringEmpty(params.hub_id)) Utils._WARN_('Invalid parameter', 'hub_id must be of type: String');
 
+            const query = _.pick(params, ['offset', 'limit']);
+
             const endpoint = `/${endpointPrefix}/${hubsPrefix}/${params.hub_id}/general`;
-            const url = this._buildUrl(endpoint, params);
+            const url = this._buildUrl(endpoint, query);
 
             return this._request(url);
           },
@@ -454,8 +479,10 @@ class FaceitAPI {
             if (Utils.isStringEmpty(params.season_id))
               Utils._WARN_('Invalid parameter', 'season_id must be of type: String');
 
+            const query = _.pick(params, ['offset', 'limit']);
+
             const endpoint = `/${endpointPrefix}/${hubsPrefix}/${params.hub_id}/${seasonsPrefix}/${params.season_id}`;
-            const url = this._buildUrl(endpoint, params);
+            const url = this._buildUrl(endpoint, query);
 
             return this._request(url);
           },
@@ -479,8 +506,10 @@ class FaceitAPI {
         if (Utils.isStringEmpty(params.leaderboard_id))
           Utils._WARN_('Invalid parameter', 'leaderboard_id must be of type: String');
 
+        const query = _.pick(params, ['offset', 'limit']);
+
         const endpoint = `/${endpointPrefix}/${params.leaderboard_id}`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, query);
 
         return this._request(url);
       },
@@ -508,7 +537,7 @@ class FaceitAPI {
         if (Utils.isStringEmpty(params.match_id)) Utils._WARN_('Invalid parameter', 'match_id must be of type: String');
 
         const endpoint = `/${endpointPrefix}/${params.match_id}`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, {});
 
         return this._request(url);
       },
@@ -527,7 +556,7 @@ class FaceitAPI {
         if (Utils.isStringEmpty(params.match_id)) Utils._WARN_('Invalid parameter', 'match_id must be of type: String');
 
         const endpoint = `/${endpointPrefix}/${params.match_id}/stats`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, {});
 
         return this._request(url);
       },
@@ -555,7 +584,7 @@ class FaceitAPI {
         if (Utils.isStringEmpty(params.name)) Utils._WARN_('Invalid parameter', 'name must be of type: String');
 
         const endpoint = `/${endpointPrefix}`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, {});
 
         return this._request(url);
       },
@@ -575,7 +604,7 @@ class FaceitAPI {
           Utils._WARN_('Invalid parameter', 'organizer_id  must be of type: String');
 
         const endpoint = `/${endpointPrefix}/${params.organizer_id}`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, {});
 
         return this._request(url);
       },
@@ -596,8 +625,10 @@ class FaceitAPI {
         if (Utils.isStringEmpty(params.organizer_id))
           Utils._WARN_('Invalid parameter', 'organizer_id  must be of type: String');
 
+        const query = _.pick(params, ['offset', 'limit']);
+
         const endpoint = `/${endpointPrefix}/${params.organizer_id}/championships`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, query);
 
         return this._request(url);
       },
@@ -619,7 +650,7 @@ class FaceitAPI {
           Utils._WARN_('Invalid parameter', 'organizer_id  must be of type: String');
 
         const endpoint = `/${endpointPrefix}/${params.organizer_id}/games`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, {});
 
         return this._request(url);
       },
@@ -640,8 +671,10 @@ class FaceitAPI {
         if (Utils.isStringEmpty(params.organizer_id))
           Utils._WARN_('Invalid parameter', 'organizer_id must be of type: String');
 
+        const query = _.pick(params, ['offset', 'limit']);
+
         const endpoint = `/${endpointPrefix}/${params.organizer_id}/hubs`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, query);
 
         return this._request(url);
       },
@@ -663,8 +696,10 @@ class FaceitAPI {
         if (Utils.isStringEmpty(params.organizer_id))
           Utils._WARN_('Invalid parameter', 'organizer_id must be of type: String');
 
+        const query = _.pick(params, ['type', 'offset', 'limit']);
+
         const endpoint = `/${endpointPrefix}/${params.organizer_id}/tournaments`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, query);
 
         return this._request(url);
       },
@@ -710,7 +745,7 @@ class FaceitAPI {
         if (Utils.isStringEmpty(params.player_id)) Utils._WARN_('Invalid parameter', 'player_id  must be of type: String');
 
         const endpoint = `/${endpointPrefix}/${params.player_id}`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, {});
 
         return this._request(url);
       },
@@ -738,8 +773,10 @@ class FaceitAPI {
           Utils._WARN_('Invalid parameter', 'from must be of type: String');
         if ('to' in params && !Utils.isNumber(params.to)) Utils._WARN_('Invalid parameter', 'to must be of type: String');
 
+        const query = _.pick(params, ['from', 'to', 'offset', 'limit']);
+
         const endpoint = `/${endpointPrefix}/${params.player_id}/history`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, query);
 
         return this._request(url);
       },
@@ -759,8 +796,10 @@ class FaceitAPI {
         // Must exists and be string
         if (Utils.isStringEmpty(params.player_id)) Utils._WARN_('Invalid parameter', 'player_id  must be of type: String');
 
+        const query = _.pick(params, ['offset', 'limit']);
+
         const endpoint = `/${endpointPrefix}/${params.player_id}/hubs`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, query);
 
         return this._request(url);
       },
@@ -783,7 +822,7 @@ class FaceitAPI {
         if (Utils.isStringEmpty(params.game_id)) Utils._WARN_('Invalid parameter', 'game_id must be of type: String');
 
         const endpoint = `/${endpointPrefix}/${params.player_id}/stats/${params.game_id}`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, {});
 
         return this._request(url);
       },
@@ -803,8 +842,10 @@ class FaceitAPI {
         // Must exists and be string
         if (Utils.isStringEmpty(params.player_id)) Utils._WARN_('Invalid parameter', 'player_id must be of type: String');
 
+        const query = _.pick(params, ['offset', 'limit']);
+
         const endpoint = `/${endpointPrefix}/${params.player_id}/tournaments`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, query);
 
         return this._request(url);
       },
@@ -820,7 +861,7 @@ class FaceitAPI {
     return {
       /**
        * @description
-       * @function players.game()
+       * @function rankings.game()
        * @param {object} params
        * @param {string} params.game_id
        * @param {string} params.region
@@ -842,15 +883,17 @@ class FaceitAPI {
         if ('country' in params && Utils.isStringEmpty(params.country))
           Utils._WARN_('Invalid parameter', 'country must be of type: String');
 
+        const query = _.pick(params, ['country', 'offset', 'limit']);
+
         const endpoint = `/${endpointPrefix}/games/${params.game_id}/regions/${params.region}`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, query);
 
         return this._request(url);
       },
 
       /**
        * @description
-       * @function players.player()
+       * @function rankings.player()
        * @param {object} params
        * @param {string} params.game_id
        * @param {string} params.region
@@ -875,8 +918,10 @@ class FaceitAPI {
         if ('country' in params && Utils.isStringEmpty(params.country))
           Utils._WARN_('Invalid parameter', 'country must be of type: String');
 
+        const query = _.pick(params, ['country', 'limit']);
+
         const endpoint = `/${endpointPrefix}/games/${params.game_id}/regions/${params.region}/players/${params.player_id}`;
-        const url = this._buildUrl(endpoint, params);
+        const url = this._buildUrl(endpoint, query);
 
         return this._request(url);
       },
