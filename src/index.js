@@ -485,7 +485,52 @@ class FaceitAPI {
     };
   }
 
-  
+  /**
+   * @description Calls related to matches endpoints
+   */
+  get matches() {
+    const endpointPrefix = 'matches';
+
+    return {
+      /**
+       * @description
+       * @function matches.show()
+       * @param {object} params
+       * @param {string} params.match_id
+       * @returns {Object}
+       */
+      show: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.match_id)) Utils._WARN_('Invalid parameter', 'match_id must be of type: String');
+
+        const endpoint = `/${endpointPrefix}/${params.match_id}`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function matches.stats()
+       * @param {object} params
+       * @param {string} params.match_id
+       * @returns {Object}
+       */
+      stats: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.match_id)) Utils._WARN_('Invalid parameter', 'match_id must be of type: String');
+
+        const endpoint = `/${endpointPrefix}/${params.match_id}/stats`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+    };
+  }
 
   /**
    * @description Checks the default parameters
