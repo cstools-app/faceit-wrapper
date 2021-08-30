@@ -1,13 +1,13 @@
 const fetch = require('isomorphic-unfetch');
 const _ = require('lodash');
 
-const Utils = require('./utils/utils');
-const Constants = require('./utils/constants');
+const Utils = require('./helpers/utils');
+const Constants = require('./helpers/constants');
 
 /**
  * @class FaceitAPI
  * @author Demian <devaccdemiann@gmail.com>
- * @description A Node.js wrapper for the faceit data api with only two dependencies. For more accurate up to date documentation visit https://developers.faceit.com/docs/tools/data-api
+ * @description A Node.js wrapper for the faceit data api with only two dependencies. For more accurate and up to date documentation visit https://developers.faceit.com/docs/tools/data-api
  * @example
  *     const FaceitAPI = require('wrapper');
  *     const client = new FaceitAPI();
@@ -31,7 +31,7 @@ class FaceitAPI {
 
     return {
       /**
-       * @description
+       * @description Retrieve all championships of a game
        * @function championships.all()
        * @param {object} params
        * @param {string} params.game
@@ -53,7 +53,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Retrieve championship details
        * @function championships.show()
        * @param {object} params
        * @param {string} params.championship_id
@@ -80,7 +80,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Retrieve all matches of a championship
        * @function championships.matches()
        * @param {object} params
        * @param {string} params.championship_id
@@ -105,7 +105,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Retrieve all subscriptions of a championship
        * @function championships.subscriptions()
        * @param {object} params
        * @param {string} params.championship_id
@@ -139,7 +139,7 @@ class FaceitAPI {
 
     return {
       /**
-       * @description
+       * @description Retrieve details of all games on FACEIT
        * @function games.all()
        * @param {object} params
        * @param {number} params.offset
@@ -156,7 +156,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Retrieve game details
        * @function games.show()
        * @param {object} params
        * @param {string} params.game_id
@@ -175,7 +175,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Retrieve the details of the parent game, if the game is region-specific
        * @function games.parent()
        * @param {object} params
        * @param {string} params.game_id
@@ -203,7 +203,7 @@ class FaceitAPI {
 
     return {
       /**
-       * @description
+       * @description Retrieve hub details
        * @function hubs.show()
        * @param {object} params
        * @param {string} params.hub_id
@@ -229,7 +229,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description REtrieve all matches of a hub
        * @function hubs.matches()
        * @param {object} params
        * @param {string} params.hub_id
@@ -253,7 +253,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description REtrieve all members of a hub
        * @function hubs.members()
        * @param {object} params
        * @param {string} params.hub_id
@@ -276,7 +276,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Retrieve all roles members can have in a hub
        * @function hubs.roles()
        * @param {object} params
        * @param {string} params.hub_id
@@ -299,7 +299,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Retrieve rules of a hub
        * @function hubs.rules()
        * @param {object} params
        * @param {string} params.hub_id
@@ -317,7 +317,7 @@ class FaceitAPI {
         return this._request(url);
       },
 
-      /**
+      /** Retrieve statistics of a hub
        * @description
        * @function hubs.stats()
        * @param {object} params
@@ -356,7 +356,7 @@ class FaceitAPI {
       get championships() {
         return {
           /**
-           * @description
+           * @description Retrieve all leaderboards of a championship
            * @function leaderboards.championships.show()
            * @param {object} params
            * @param {string} params.championship_id
@@ -380,7 +380,7 @@ class FaceitAPI {
           },
 
           /**
-           * @description
+           * @description Retrieve group ranking of a championship
            * @function leaderboards.championships.group()
            * @param {object} params
            * @param {string} params.championship_id
@@ -412,7 +412,7 @@ class FaceitAPI {
       get hubs() {
         return {
           /**
-           * @description
+           * @description Retrieve all leaderboards of a hub
            * @function leaderboards.hubs.show()
            * @param {object} params
            * @param {string} params.hub_id
@@ -435,7 +435,7 @@ class FaceitAPI {
           },
 
           /**
-           * @description
+           * @description Retrieve all time ranking of a hub
            * @function leaderboards.hubs.general()
            * @param {object} params
            * @param {string} params.hub_id
@@ -458,7 +458,7 @@ class FaceitAPI {
           },
 
           /**
-           * @description
+           * @description Retrieve seasonal ranking of a hub
            * @function leaderboards.hubs.season()
            * @param {object} params
            * @param {string} params.hub_id
@@ -488,7 +488,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Retrieve ranking from a leaderboard id
        * @function leaderboards.show()
        * @param {object} params
        * @param {string} params.leaderboard_id
@@ -526,7 +526,7 @@ class FaceitAPI {
 
     return {
       /**
-       * @description
+       * @description Retrieve match details
        * @function matches.show()
        * @param {object} params
        * @param {string} params.match_id
@@ -545,7 +545,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Retrieve statistics of a match
        * @function matches.stats()
        * @param {object} params
        * @param {string} params.match_id
@@ -573,7 +573,7 @@ class FaceitAPI {
 
     return {
       /**
-       * @description
+       * @description Retrieve organizer details from name
        * @function organizers.get()
        * @param {object} params
        * @param {string} params.name
@@ -592,7 +592,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Retrieve organizer details
        * @function organizers.show()
        * @param {object} params
        * @param {string} params.organizer_id
@@ -612,7 +612,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Retrieve all championships of an organizer
        * @function organizers.championships()
        * @param {object} params
        * @param {string} params.organizer_id
@@ -636,7 +636,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Retrieve all games an organizer is involved with
        * @function organizers.games()
        * @param {object} params
        * @param {string} params.organizer_id
@@ -658,7 +658,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Retrieve all hubs of an organizer
        * @function organizers.hubs()
        * @param {object} params
        * @param {string} params.organizer_id
@@ -682,7 +682,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Retrieve all tournaments of an organizer
        * @function organizers.tournaments()
        * @param {object} params
        * @param {string} params.organizer_id
@@ -716,7 +716,7 @@ class FaceitAPI {
 
     return {
       /**
-       * @description
+       * @description Retrieve player details
        * @function players.get()
        * @param {object} params
        * @param {string} params.nickname
@@ -734,7 +734,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Retrieve player details
        * @function players.show()
        * @param {object} params
        * @param {string} params.player_id
@@ -753,7 +753,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Retrieve all matches of a player
        * @function players.history()
        * @param {object} params
        * @param {string} params.player_id
@@ -784,7 +784,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Retrieve all hubs of a player
        * @function players.hubs()
        * @param {object} params
        * @param {string} params.player_id
@@ -807,7 +807,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Retrieve statistics of a player
        * @function organizers.stats()
        * @param {object} params
        * @param {string} params.player_id
@@ -830,7 +830,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Retrieve all tournaments of a player
        * @function players.tournaments()
        * @param {object} params
        * @param {string} params.player_id
@@ -862,7 +862,7 @@ class FaceitAPI {
 
     return {
       /**
-       * @description
+       * @description Retrieve global ranking of a game
        * @function rankings.game()
        * @param {object} params
        * @param {string} params.game_id
@@ -894,7 +894,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Retrieve user position in the global ranking of a game
        * @function rankings.player()
        * @param {object} params
        * @param {string} params.game_id
@@ -938,7 +938,7 @@ class FaceitAPI {
 
     return {
       /**
-       * @description
+       * @description Search for championships
        * @function search.championships()
        * @param {object} params
        * @param {string} params.name
@@ -972,7 +972,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Search for hubs
        * @function search.hubs()
        * @param {object} params
        * @param {string} params.name
@@ -1005,7 +1005,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Search for organizers
        * @function search.organizers()
        * @param {object} params
        * @param {string} params.name
@@ -1028,7 +1028,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Search for players
        * @function search.players()
        * @param {object} params
        * @param {string} params.nickname
@@ -1061,7 +1061,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Search for teams
        * @function search.teams()
        * @param {object} params
        * @param {string} params.nickname
@@ -1089,7 +1089,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Search for tournaments
        * @function search.tournaments()
        * @param {object} params
        * @param {string} params.name
@@ -1132,7 +1132,7 @@ class FaceitAPI {
 
     return {
       /**
-       * @description
+       * @description Retrieve team details
        * @function teams.show()
        * @param {object} params
        * @param {string} params.team_id
@@ -1151,7 +1151,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Retrieve statistics of a team
        * @function teams.stats()
        * @param {object} params
        * @param {string} params.team_id
@@ -1173,7 +1173,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Retrieve tournaments of a team
        * @function teams.tournaments()
        * @param {object} params
        * @param {string} params.team_id
@@ -1204,7 +1204,7 @@ class FaceitAPI {
 
     return {
       /**
-       * @description
+       * @description Retrieve tournaments v1 ( no longer used)
        * @function tournaments.get()
        * @param {object} params
        * @param {string} params.game
@@ -1223,7 +1223,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Retrieve tournament details
        * @function tournaments.show()
        * @param {object} params
        * @param {string} params.tournament_id
@@ -1250,7 +1250,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Retrieve brackets of a tournament
        * @function tournaments.brackets()
        * @param {object} params
        * @param {string} params.tournament_id
@@ -1270,7 +1270,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Retrieve all matches of a tournament
        * @function tournaments.brackets()
        * @param {object} params
        * @param {string} params.tournament_id
@@ -1294,7 +1294,7 @@ class FaceitAPI {
       },
 
       /**
-       * @description
+       * @description Retrieve all teams of a tournament
        * @function tournaments.teams()
        * @param {object} params
        * @param {string} params.tournament_id
@@ -1390,10 +1390,6 @@ class FaceitAPI {
   }
 }
 
+FaceitAPI.BASEURL = Constants.BaseURL;
+
 module.exports = FaceitAPI;
-/**
- * @description
- * @function championships.all()
- * @param {object} params
- * @returns {Object}
- */
