@@ -58,13 +58,13 @@ class FaceitAPI {
 
       /**
        * @description
-       * @function championships.details()
+       * @function championships.show()
        * @param {object} params
        * @param {string} params.championship_id
        * @param {array[string]} params.expanded
        * @returns {Object}
        */
-      details: (params = {}) => {
+      show: (params = {}) => {
         this._defaults(params);
 
         // Must exists and be string
@@ -83,7 +83,7 @@ class FaceitAPI {
 
       /**
        * @description
-       * @function championships.details()
+       * @function championships.matches()
        * @param {object} params
        * @param {string} params.championship_id
        * @param {string} params.type
@@ -106,7 +106,7 @@ class FaceitAPI {
 
       /**
        * @description
-       * @function championships.details()
+       * @function championships.subscriptions()
        * @param {object} params
        * @param {string} params.championship_id
        * @param {string} params.type
@@ -122,6 +122,72 @@ class FaceitAPI {
           Utils._WARN_('Invalid parameter', 'championship_id must be of type: String');
 
         const endpoint = `/${endpointPrefix}/${params.championship_id}/subscriptions`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+    };
+  }
+
+  /**
+   * @description Calls related to games endpoints
+   */
+  get games() {
+    const endpointPrefix = 'games';
+
+    return {
+      /**
+       * @description
+       * @function games.all()
+       * @param {object} params
+       * @param {number} params.offset
+       * @param {number} params.limit
+       * @returns {Object}
+       */
+      all: (params = {}) => {
+        this._defaults(params);
+
+        const endpoint = `/${endpointPrefix}`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function games.show()
+       * @param {object} params
+       * @param {string} params.game_id
+       * @returns {Object}
+       */
+      show: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (!Utils.isString(params.game_id) || Utils.isStringEmpty(params.game_id))
+          Utils._WARN_('Invalid parameter', 'game_id must be of type: String');
+
+        const endpoint = `/${endpointPrefix}/${params.game_id}`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function games.parent()
+       * @param {object} params
+       * @param {string} params.game_id
+       * @returns {Object}
+       */
+      parent: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (!Utils.isString(params.game_id) || Utils.isStringEmpty(params.game_id))
+          Utils._WARN_('Invalid parameter', 'game_id must be of type: String');
+
+        const endpoint = `/${endpointPrefix}/${params.game_id}/parent`;
         const url = this._buildUrl(endpoint, params);
 
         return this._request(url);
