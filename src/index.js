@@ -929,6 +929,200 @@ class FaceitAPI {
   }
 
   /**
+   * @description Calls related to search endpoints
+   */
+  get search() {
+    const endpointPrefix = 'search';
+
+    return {
+      /**
+       * @description
+       * @function search.championships()
+       * @param {object} params
+       * @param {string} params.name
+       * @param {string} params.game
+       * @param {string} params.region
+       * @param {string} params.type
+       * @param {number} params.offset
+       * @param {number} params.limit
+       * @returns {Object}
+       */
+      championships: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.name)) Utils._WARN_('Invalid parameter', 'name must be of type: String');
+
+        // Must exists and be string
+        if ('game' in params && Utils.isStringEmpty(params.game))
+          Utils._WARN_('Invalid parameter', 'game must be of type: String');
+
+        // Must exists and be string
+        if ('region' in params && Utils.isStringEmpty(params.region))
+          Utils._WARN_('Invalid parameter', 'region must be of type: String');
+
+        const query = _.pick(params, ['name', 'game', 'region', 'offset', 'limit']);
+
+        const endpoint = `/${endpointPrefix}/championships`;
+        const url = this._buildUrl(endpoint, query);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function search.hubs()
+       * @param {object} params
+       * @param {string} params.name
+       * @param {string} params.game
+       * @param {string} params.region
+       * @param {number} params.offset
+       * @param {number} params.limit
+       * @returns {Object}
+       */
+      hubs: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.name)) Utils._WARN_('Invalid parameter', 'name must be of type: String');
+
+        // Must exists and be string
+        if ('game' in params && Utils.isStringEmpty(params.game))
+          Utils._WARN_('Invalid parameter', 'game must be of type: String');
+
+        // Must exists and be string
+        if ('region' in params && Utils.isStringEmpty(params.region))
+          Utils._WARN_('Invalid parameter', 'region must be of type: String');
+
+        const query = _.pick(params, ['name', 'game', 'region', 'offset', 'limit']);
+
+        const endpoint = `/${endpointPrefix}/hubs`;
+        const url = this._buildUrl(endpoint, query);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function search.organizers()
+       * @param {object} params
+       * @param {string} params.name
+       * @param {number} params.offset
+       * @param {number} params.limit
+       * @returns {Object}
+       */
+      organizers: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.name)) Utils._WARN_('Invalid parameter', 'name must be of type: String');
+
+        const query = _.pick(params, ['name', 'offset', 'limit']);
+
+        const endpoint = `/${endpointPrefix}/organizers`;
+        const url = this._buildUrl(endpoint, query);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function search.players()
+       * @param {object} params
+       * @param {string} params.nickname
+       * @param {string} params.game
+       * @param {string} params.country
+       * @param {number} params.offset
+       * @param {number} params.limit
+       * @returns {Object}
+       */
+      players: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.nickname)) Utils._WARN_('Invalid parameter', 'nickname must be of type: String');
+
+        // Must exists and be string
+        if ('game' in params && Utils.isStringEmpty(params.game))
+          Utils._WARN_('Invalid parameter', 'game must be of type: String');
+
+        // Must exists and be string
+        if ('country' in params && Utils.isStringEmpty(params.country))
+          Utils._WARN_('Invalid parameter', 'country must be of type: String');
+
+        const query = _.pick(params, ['nickname', 'country', 'offset', 'limit']);
+
+        const endpoint = `/${endpointPrefix}/players`;
+        const url = this._buildUrl(endpoint, query);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function search.teams()
+       * @param {object} params
+       * @param {string} params.nickname
+       * @param {string} params.game
+       * @param {number} params.offset
+       * @param {number} params.limit
+       * @returns {Object}
+       */
+      teams: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.nickname)) Utils._WARN_('Invalid parameter', 'nickname must be of type: String');
+
+        // Must exists and be string
+        if ('game' in params && Utils.isStringEmpty(params.game))
+          Utils._WARN_('Invalid parameter', 'game must be of type: String');
+
+        const query = _.pick(params, ['nickname', 'country', 'offset', 'limit']);
+
+        const endpoint = `/${endpointPrefix}/teams`;
+        const url = this._buildUrl(endpoint, query);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function search.tournaments()
+       * @param {object} params
+       * @param {string} params.name
+       * @param {string} params.game
+       * @param {string} params.region
+       * @param {string} params.type
+       * @param {number} params.offset
+       * @param {number} params.limit
+       * @returns {Object}
+       */
+      tournaments: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.name)) Utils._WARN_('Invalid parameter', 'name must be of type: String');
+
+        // Must exists and be string
+        if ('game' in params && Utils.isStringEmpty(params.game))
+          Utils._WARN_('Invalid parameter', 'game must be of type: String');
+
+        // Must exists and be string
+        if ('region' in params && Utils.isStringEmpty(params.region))
+          Utils._WARN_('Invalid parameter', 'region must be of type: String');
+
+        const query = _.pick(params, ['name', 'game', 'region', 'type', 'offset', 'limit']);
+
+        const endpoint = `/${endpointPrefix}/tournaments`;
+        const url = this._buildUrl(endpoint, query);
+
+        return this._request(url);
+      },
+    };
+  }
+
+  /**
    * @description Checks the default parameters
    * @function _defaults()
    * @param {object} params
