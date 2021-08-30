@@ -504,6 +504,10 @@ class FaceitAPI {
         if (Utils.isStringEmpty(params.leaderboard_id))
           Utils._WARN_('Invalid parameter', 'leaderboard_id must be of type: String');
 
+        // Must exists and be array
+        if ('expanded' in params && !Utils.isArray(params.expanded))
+          Utils._WARN_('Invalid parameter', 'expanded must be of type: Array[String]');
+
         const query = _.pick(params, ['offset', 'limit']);
 
         const endpoint = `/${endpointPrefix}/${params.leaderboard_id}`;
@@ -1185,6 +1189,129 @@ class FaceitAPI {
         const query = _.pick(params, ['offset', 'limit']);
 
         const endpoint = `/${endpointPrefix}/${params.team_id}/tournaments`;
+        const url = this._buildUrl(endpoint, query);
+
+        return this._request(url);
+      },
+    };
+  }
+
+  /**
+   * @description Calls related to tournaments endpoints
+   */
+  get tournaments() {
+    const endpointPrefix = 'tournaments';
+
+    return {
+      /**
+       * @description
+       * @function tournaments.get()
+       * @param {object} params
+       * @param {string} params.game
+       * @param {string} params.region
+       * @param {number} params.offset
+       * @param {number} params.limit
+       * @returns {Object}
+       */
+      get: (params = {}) => {
+        this._defaults(params);
+
+        const endpoint = `/${endpointPrefix}/`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function tournaments.show()
+       * @param {object} params
+       * @param {string} params.tournament_id
+       * @param {array[string]} params.expanded
+       * @returns {Object}
+       */
+      show: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.tournament_id))
+          Utils._WARN_('Invalid parameter', 'tournament_id  must be of type: String');
+
+        // Must exists and be array
+        if ('expanded' in params && !Utils.isArray(params.expanded))
+          Utils._WARN_('Invalid parameter', 'expanded must be of type: Array[String]');
+
+        const query = _.pick(params, ['expanded']);
+
+        const endpoint = `/${endpointPrefix}/${params.tournament_id}`;
+        const url = this._buildUrl(endpoint, query);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function tournaments.brackets()
+       * @param {object} params
+       * @param {string} params.tournament_id
+       * @returns {Object}
+       */
+      brackets: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.tournament_id))
+          Utils._WARN_('Invalid parameter', 'tournament_id  must be of type: String');
+
+        const endpoint = `/${endpointPrefix}/${params.tournament_id}/brackets`;
+        const url = this._buildUrl(endpoint, {});
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function tournaments.brackets()
+       * @param {object} params
+       * @param {string} params.tournament_id
+       * @param {number} params.offset
+       * @param {number} params.limit
+       * @returns {Object}
+       */
+      matches: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.tournament_id))
+          Utils._WARN_('Invalid parameter', 'tournament_id  must be of type: String');
+
+        const query = _.pick(params, ['offset', 'limit']);
+
+        const endpoint = `/${endpointPrefix}/${params.tournament_id}/matches`;
+        const url = this._buildUrl(endpoint, query);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function tournaments.teams()
+       * @param {object} params
+       * @param {string} params.tournament_id
+       * @param {number} params.offset
+       * @param {number} params.limit
+       * @returns {Object}
+       */
+      teams: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.tournament_id))
+          Utils._WARN_('Invalid parameter', 'tournament_id  must be of type: String');
+
+        const query = _.pick(params, ['offset', 'limit']);
+
+        const endpoint = `/${endpointPrefix}/${params.tournament_id}/teams`;
         const url = this._buildUrl(endpoint, query);
 
         return this._request(url);
