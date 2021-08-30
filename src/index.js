@@ -67,10 +67,6 @@ class FaceitAPI {
         if (Utils.isStringEmpty(params.championship_id))
           Utils._WARN_('Invalid parameter', 'championship_id must be of type: String');
 
-        // Must exists and be array
-        if ('expanded' in params && !Utils.isArray(params.expanded))
-          Utils._WARN_('Invalid parameter', 'expanded must be of type: Array[String]');
-
         const query = _.pick(params, ['expanded']);
 
         const endpoint = `/${endpointPrefix}/${params.championship_id}`;
@@ -215,10 +211,6 @@ class FaceitAPI {
 
         // Must exists and be string
         if (Utils.isStringEmpty(params.hub_id)) Utils._WARN_('Invalid parameter', 'hub_id must be of type: String');
-
-        // Must exists and be array
-        if ('expanded' in params && !Utils.isArray(params.expanded))
-          Utils._WARN_('Invalid parameter', 'expanded must be of type: Array[String]');
 
         const query = _.pick(params, ['expanded']);
 
@@ -503,10 +495,6 @@ class FaceitAPI {
         // Must exists and be string
         if (Utils.isStringEmpty(params.leaderboard_id))
           Utils._WARN_('Invalid parameter', 'leaderboard_id must be of type: String');
-
-        // Must exists and be array
-        if ('expanded' in params && !Utils.isArray(params.expanded))
-          Utils._WARN_('Invalid parameter', 'expanded must be of type: Array[String]');
 
         const query = _.pick(params, ['offset', 'limit']);
 
@@ -1237,10 +1225,6 @@ class FaceitAPI {
         if (Utils.isStringEmpty(params.tournament_id))
           Utils._WARN_('Invalid parameter', 'tournament_id  must be of type: String');
 
-        // Must exists and be array
-        if ('expanded' in params && !Utils.isArray(params.expanded))
-          Utils._WARN_('Invalid parameter', 'expanded must be of type: Array[String]');
-
         const query = _.pick(params, ['expanded']);
 
         const endpoint = `/${endpointPrefix}/${params.tournament_id}`;
@@ -1333,6 +1317,10 @@ class FaceitAPI {
 
     // If exists be String
     if ('type' in params && !Utils.isString(params.type)) Utils._WARN_('Invalid parameter', 'type must be of type: String');
+
+    // Must exists and be array
+    if ('expanded' in params && !Utils.isArray(params.expanded))
+      Utils._WARN_('Invalid parameter', 'expanded must be of type: Array[String]');
 
     // If exists be String
     if ('offset' in params && !Utils.isNumber(params.type))
