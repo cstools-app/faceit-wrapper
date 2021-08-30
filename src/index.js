@@ -336,7 +336,7 @@ class FaceitAPI {
     const seasonsPrefix = 'seasons';
 
     return {
-      championships: () => {
+      get championships() {
         return {
           /**
            * @description
@@ -388,7 +388,7 @@ class FaceitAPI {
         };
       },
 
-      hubs: () => {
+      get hubs() {
         return {
           /**
            * @description
@@ -525,6 +525,143 @@ class FaceitAPI {
         if (Utils.isStringEmpty(params.match_id)) Utils._WARN_('Invalid parameter', 'match_id must be of type: String');
 
         const endpoint = `/${endpointPrefix}/${params.match_id}/stats`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+    };
+  }
+
+  /**
+   * @description Calls related to organizers endpoints
+   */
+  get organizers() {
+    const endpointPrefix = 'organizers';
+
+    return {
+      /**
+       * @description
+       * @function organizers.get()
+       * @param {object} params
+       * @param {string} params.name
+       * @returns {Object}
+       */
+      get: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.name)) Utils._WARN_('Invalid parameter', 'name must be of type: String');
+
+        const endpoint = `/${endpointPrefix}`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function organizers.show()
+       * @param {object} params
+       * @param {string} params.organizer_id
+       * @returns {Object}
+       */
+      show: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.organizer_id))
+          Utils._WARN_('Invalid parameter', 'organizer_id  must be of type: String');
+
+        const endpoint = `/${endpointPrefix}/${params.organizer_id}`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function organizers.championships()
+       * @param {object} params
+       * @param {string} params.organizer_id
+       * @param {number} params.offset
+       * @param {number} params.limit
+       * @returns {Object}
+       */
+      championships: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.organizer_id))
+          Utils._WARN_('Invalid parameter', 'organizer_id  must be of type: String');
+
+        const endpoint = `/${endpointPrefix}/${params.organizer_id}/championships`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function organizers.games()
+       * @param {object} params
+       * @param {string} params.organizer_id
+       * @param {number} params.offset
+       * @param {number} params.limit
+       * @returns {Object}
+       */
+      games: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.organizer_id))
+          Utils._WARN_('Invalid parameter', 'organizer_id  must be of type: String');
+
+        const endpoint = `/${endpointPrefix}/${params.organizer_id}/games`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function organizers.hubs()
+       * @param {object} params
+       * @param {string} params.organizer_id
+       * @param {number} params.offset
+       * @param {number} params.limit
+       * @returns {Object}
+       */
+      hubs: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.organizer_id))
+          Utils._WARN_('Invalid parameter', 'organizer_id must be of type: String');
+
+        const endpoint = `/${endpointPrefix}/${params.organizer_id}/hubs`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function organizers.tournaments()
+       * @param {object} params
+       * @param {string} params.organizer_id
+       * @param {string} params.type
+       * @param {number} params.offset
+       * @param {number} params.limit
+       * @returns {Object}
+       */
+      tournaments: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.organizer_id))
+          Utils._WARN_('Invalid parameter', 'organizer_id must be of type: String');
+
+        const endpoint = `/${endpointPrefix}/${params.organizer_id}/tournaments`;
         const url = this._buildUrl(endpoint, params);
 
         return this._request(url);
