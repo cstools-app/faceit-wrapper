@@ -670,6 +670,146 @@ class FaceitAPI {
   }
 
   /**
+   * @description Calls related to players endpoints
+   */
+  get players() {
+    const endpointPrefix = 'players';
+
+    return {
+      /**
+       * @description
+       * @function players.get()
+       * @param {object} params
+       * @param {string} params.nickname
+       * @param {string} params.game
+       * @param {string} params.game_player_id
+       * @returns {Object}
+       */
+      get: (params = {}) => {
+        this._defaults(params);
+
+        const endpoint = `/${endpointPrefix}`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function players.show()
+       * @param {object} params
+       * @param {string} params.player_id
+       * @returns {Object}
+       */
+      show: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.player_id)) Utils._WARN_('Invalid parameter', 'player_id  must be of type: String');
+
+        const endpoint = `/${endpointPrefix}/${params.player_id}`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function players.history()
+       * @param {object} params
+       * @param {string} params.player_id
+       * @param {string} params.game
+       * @param {number} params.from
+       * @param {number} params.to
+       * @param {number} params.offset
+       * @param {number} params.limit
+       * @returns {Object}
+       */
+      history: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.player_id)) Utils._WARN_('Invalid parameter', 'player_id  must be of type: String');
+
+        // If exists be String
+        if ('from' in params && !Utils.isNumber(params.from))
+          Utils._WARN_('Invalid parameter', 'from must be of type: String');
+        if ('to' in params && !Utils.isNumber(params.to)) Utils._WARN_('Invalid parameter', 'to must be of type: String');
+
+        const endpoint = `/${endpointPrefix}/${params.player_id}/history`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function players.hubs()
+       * @param {object} params
+       * @param {string} params.player_id
+       * @param {number} params.offset
+       * @param {number} params.limit
+       * @returns {Object}
+       */
+      hubs: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.player_id)) Utils._WARN_('Invalid parameter', 'player_id  must be of type: String');
+
+        const endpoint = `/${endpointPrefix}/${params.player_id}/hubs`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function organizers.stats()
+       * @param {object} params
+       * @param {string} params.player_id
+       * @param {string} params.game_id
+       * @returns {Object}
+       */
+      stats: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.player_id)) Utils._WARN_('Invalid parameter', 'player_id must be of type: String');
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.game_id)) Utils._WARN_('Invalid parameter', 'game_id must be of type: String');
+
+        const endpoint = `/${endpointPrefix}/${params.player_id}/stats/${params.game_id}`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function players.tournaments()
+       * @param {object} params
+       * @param {string} params.player_id
+       * @param {number} params.offset
+       * @param {number} params.limit
+       * @returns {Object}
+       */
+      tournaments: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.player_id)) Utils._WARN_('Invalid parameter', 'player_id must be of type: String');
+
+        const endpoint = `/${endpointPrefix}/${params.player_id}/tournaments`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+    };
+  }
+
+  /**
    * @description Checks the default parameters
    * @function _defaults()
    * @param {object} params
@@ -681,10 +821,10 @@ class FaceitAPI {
     // Must be object
     if (!Utils.isObject(params)) Utils._WARN_('Invalid parameter', 'params must be of type: Object');
 
-    // Must exists and be String
+    // If exists be String
     if ('type' in params && !Utils.isString(params.type)) Utils._WARN_('Invalid parameter', 'type must be of type: String');
 
-    // Must be Number
+    // If exists be String
     if ('offset' in params && !Utils.isNumber(params.type))
       Utils._WARN_('Invalid parameter', 'offset must be of type: Number');
     if ('limit' in params && !Utils.isNumber(params.type))
