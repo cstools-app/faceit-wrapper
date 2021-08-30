@@ -3,6 +3,8 @@ const fetch = require('isomorphic-unfetch');
 const Utils = require('./utils/utils');
 const Constants = require('./utils/constants');
 
+// TODO:: seperate query and path
+
 /**
  * @class FaceitAPI
  * @author Demian <devaccdemiann@gmail.com>
@@ -802,6 +804,78 @@ class FaceitAPI {
         if (Utils.isStringEmpty(params.player_id)) Utils._WARN_('Invalid parameter', 'player_id must be of type: String');
 
         const endpoint = `/${endpointPrefix}/${params.player_id}/tournaments`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+    };
+  }
+
+  /**
+   * @description Calls related to rankings endpoints
+   */
+  get rankings() {
+    const endpointPrefix = 'rankings';
+
+    return {
+      /**
+       * @description
+       * @function players.game()
+       * @param {object} params
+       * @param {string} params.game_id
+       * @param {string} params.region
+       * @param {string} params.country
+       * @param {number} params.offset
+       * @param {number} params.limit
+       * @returns {Object}
+       */
+      game: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.game_id)) Utils._WARN_('Invalid parameter', 'game_id must be of type: String');
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.region)) Utils._WARN_('Invalid parameter', 'region must be of type: String');
+
+        // Must exists and be string
+        if ('country' in params && Utils.isStringEmpty(params.country))
+          Utils._WARN_('Invalid parameter', 'country must be of type: String');
+
+        const endpoint = `/${endpointPrefix}/games/${params.game_id}/regions/${params.region}`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function players.player()
+       * @param {object} params
+       * @param {string} params.game_id
+       * @param {string} params.region
+       * @param {string} params.player_id
+       * @param {string} params.country
+       * @param {number} params.limit
+       * @returns {Object}
+       */
+      player: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.game_id)) Utils._WARN_('Invalid parameter', 'game_id must be of type: String');
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.region)) Utils._WARN_('Invalid parameter', 'region must be of type: String');
+
+        // Must exists and be string
+        if (Utils.isStringEmpty(params.player_id)) Utils._WARN_('Invalid parameter', 'player_id must be of type: String');
+
+        // Must exists and be string
+        if ('country' in params && Utils.isStringEmpty(params.country))
+          Utils._WARN_('Invalid parameter', 'country must be of type: String');
+
+        const endpoint = `/${endpointPrefix}/games/${params.game_id}/regions/${params.region}/players/${params.player_id}`;
         const url = this._buildUrl(endpoint, params);
 
         return this._request(url);
