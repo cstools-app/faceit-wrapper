@@ -1371,7 +1371,7 @@ class FaceitAPI {
   async _request(url, options) {
     const key = this.apiKey;
     const headers = {
-      Authorization: key,
+      Authorization: `Bearer ${key}`,
       'Content-Type': 'application/json',
     };
 
@@ -1380,7 +1380,7 @@ class FaceitAPI {
         reject(new Error('api key must be supplied'));
       }
 
-      fetch(url, { ...options, ...headers })
+      fetch(url, { ...options, headers })
         .then((res) => res.json())
         .then((json) => {
           resolve(json);
