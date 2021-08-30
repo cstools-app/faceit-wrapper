@@ -46,10 +46,6 @@ class FaceitAPI {
         if (!Utils.isString(params.game) || Utils.isStringEmpty(params.game))
           Utils._WARN_('Invalid parameter', 'game must be of type: String');
 
-        // Must exists and be array
-        if ('type' in params && !Utils.isArray(params.type))
-          Utils._WARN_('Invalid parameter', 'type must be of type: Array');
-
         const endpoint = `/${endpointPrefix}`;
         const url = this._buildUrl(endpoint, params);
 
@@ -73,7 +69,7 @@ class FaceitAPI {
 
         // Must exists and be array
         if ('expanded' in params && !Utils.isArray(params.expanded))
-          Utils._WARN_('Invalid parameter', 'expanded must be of type: Array');
+          Utils._WARN_('Invalid parameter', 'expanded must be of type: Array[String]');
 
         const endpoint = `/${endpointPrefix}/${params.championship_id}`;
         const url = this._buildUrl(endpoint, params);
@@ -196,6 +192,149 @@ class FaceitAPI {
   }
 
   /**
+   * @description Calls related to hubs endpoints
+   */
+  get hubs() {
+    const endpointPrefix = 'hubs';
+
+    return {
+      /**
+       * @description
+       * @function hubs.show()
+       * @param {object} params
+       * @param {string} params.hub_id
+       * @param {array[string]} params.expanded
+       * @returns {Object}
+       */
+      show: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (!Utils.isString(params.hub_id) || Utils.isStringEmpty(params.hub_id))
+          Utils._WARN_('Invalid parameter', 'hub_id must be of type: String');
+
+        // Must exists and be array
+        if ('expanded' in params && !Utils.isArray(params.expanded))
+          Utils._WARN_('Invalid parameter', 'expanded must be of type: Array[String]');
+
+        const endpoint = `/${endpointPrefix}/${params.hub_id}`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function hubs.matches()
+       * @param {object} params
+       * @param {string} params.hub_id
+       * @param {string} params.type
+       * @param {number} params.offset
+       * @param {number} params.limit
+       * @returns {Object}
+       */
+      matches: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (!Utils.isString(params.hub_id) || Utils.isStringEmpty(params.hub_id))
+          Utils._WARN_('Invalid parameter', 'hub_id must be of type: String');
+
+        const endpoint = `/${endpointPrefix}/${params.hub_id}/matches`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function hubs.members()
+       * @param {object} params
+       * @param {string} params.hub_id
+       * @param {number} params.offset
+       * @param {number} params.limit
+       * @returns {Object}
+       */
+      members: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (!Utils.isString(params.hub_id) || Utils.isStringEmpty(params.hub_id))
+          Utils._WARN_('Invalid parameter', 'hub_id must be of type: String');
+
+        const endpoint = `/${endpointPrefix}/${params.hub_id}/members`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function hubs.roles()
+       * @param {object} params
+       * @param {string} params.hub_id
+       * @param {number} params.offset
+       * @param {number} params.limit
+       * @returns {Object}
+       */
+      roles: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (!Utils.isString(params.hub_id) || Utils.isStringEmpty(params.hub_id))
+          Utils._WARN_('Invalid parameter', 'hub_id must be of type: String');
+
+        const endpoint = `/${endpointPrefix}/${params.hub_id}/roles`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function hubs.rules()
+       * @param {object} params
+       * @param {string} params.hub_id
+       * @returns {Object}
+       */
+      rules: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (!Utils.isString(params.hub_id) || Utils.isStringEmpty(params.hub_id))
+          Utils._WARN_('Invalid parameter', 'hub_id must be of type: String');
+
+        const endpoint = `/${endpointPrefix}/${params.hub_id}/rules`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function hubs.stats()
+       * @param {object} params
+       * @param {string} params.hub_id
+       * @param {number} params.offset
+       * @param {number} params.limit
+       * @returns {Object}
+       */
+      stats: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (!Utils.isString(params.hub_id) || Utils.isStringEmpty(params.hub_id))
+          Utils._WARN_('Invalid parameter', 'hub_id must be of type: String');
+
+        const endpoint = `/${endpointPrefix}/${params.hub_id}/stats`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+    };
+  }
+
+  /**
    * @description Checks the default parameters
    * @function _defaults()
    * @param {object} params
@@ -206,6 +345,9 @@ class FaceitAPI {
   _defaults(params) {
     // Must be object
     if (!Utils.isObject(params)) Utils._WARN_('Invalid parameter', 'params must be of type: Object');
+
+    // Must exists and be String
+    if ('type' in params && !Utils.isString(params.type)) Utils._WARN_('Invalid parameter', 'type must be of type: String');
 
     // Must be Number
     if ('offset' in params && !Utils.isNumber(params.type))
@@ -236,7 +378,7 @@ class FaceitAPI {
    */
   _buildUrl(endpoint, params) {
     const query = this._buildQuery(params);
-    const base = `${Constants.BaseURL}/${endpoint}`;
+    const base = `${Constants.BaseURL}${endpoint}`;
 
     return query ? `${base}?${query}` : base;
   }
