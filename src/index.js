@@ -1,6 +1,6 @@
 const fetch = require('isomorphic-unfetch');
 
-// const Utils = require('./utils/utils');
+const Utils = require('./utils/utils');
 const Constants = require('./utils/constants');
 
 /**
@@ -22,6 +22,52 @@ class FaceitAPI {
     this.apiKey = apiKey;
   }
 
+  /**
+   * @description Checks the default parameters
+   * @function _defaults()
+   * @param {object} params
+   * @param {number} params.offset
+   * @param {number} params.limit
+   * @returns {Object}
+   */
+  _defaults(params) {
+    // Must be object
+    if (!Utils.isObject(params)) Utils._WARN_('Invalid parameter', 'params must be of type: Object');
+
+    // Must be Number
+    if ('offset' in params && !Utils.isNumber(params.type))
+      Utils._WARN_('Invalid parameter', 'offset must be of type: Number');
+    if ('limit' in params && !Utils.isNumber(params.type))
+      Utils._WARN_('Invalid parameter', 'limit must be of type: Number');
+  }
+
+  /**
+   * @description Formats object into http query
+   * @function _buildQuery()
+   * @param {string} url
+   * @param {object} query
+   * @returns {string}
+   */
+  _buildQuery(query) {
+    return Object.entries(query)
+      .map((pair) => pair.map(encodeURIComponent).join('='))
+      .join('&');
+  }
+
+  /**
+   * @description Formats endpoint and params into a url
+   * @function _buildQuery()
+   * @param {string} endpoint
+   * @param {object} params
+   * @returns {string}
+   */
+  _buildUrl(endpoint, params) {
+    const query = this._buildQuery(params);
+    const base = `${Constants.BaseURL}/${endpoint}`;
+
+    return query ? `${base}?${query}` : base;
+  }
+
   async _request(url, options) {
     const key = this.apiKey;
     const headers = {
@@ -30,9 +76,11 @@ class FaceitAPI {
     };
 
     return new Promise((resolve, reject) => {
-      if (!key) return new Error('Please supply an api key.');
+      if (!key) {
+        reject(new Error('api key must be supplied'));
+      }
 
-      fetch(Constants.BaseURL + url, { ...options, ...headers })
+      fetch(url, { ...options, ...headers })
         .then((res) => res.json())
         .then((json) => {
           resolve(json);
