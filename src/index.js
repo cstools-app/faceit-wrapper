@@ -23,6 +23,113 @@ class FaceitAPI {
   }
 
   /**
+   * @description Calls related to championships endpoints
+   */
+  get championships() {
+    const endpointPrefix = 'championships';
+
+    return {
+      /**
+       * @description
+       * @function championships.all()
+       * @param {object} params
+       * @param {string} params.game
+       * @param {string} params.type
+       * @param {number} params.offset
+       * @param {number} params.limit
+       * @returns {Object}
+       */
+      all: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (!Utils.isString(params.game) || Utils.isStringEmpty(params.game))
+          Utils._WARN_('Invalid parameter', 'game must be of type: String');
+
+        // Must exists and be array
+        if ('type' in params && !Utils.isArray(params.type))
+          Utils._WARN_('Invalid parameter', 'type must be of type: Array');
+
+        const endpoint = `/${endpointPrefix}`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function championships.details()
+       * @param {object} params
+       * @param {string} params.championship_id
+       * @param {array[string]} params.expanded
+       * @returns {Object}
+       */
+      details: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (!Utils.isString(params.championship_id) || Utils.isStringEmpty(params.championship_id))
+          Utils._WARN_('Invalid parameter', 'championship_id must be of type: String');
+
+        // Must exists and be array
+        if ('expanded' in params && !Utils.isArray(params.expanded))
+          Utils._WARN_('Invalid parameter', 'expanded must be of type: Array');
+
+        const endpoint = `/${endpointPrefix}/${params.championship_id}`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function championships.details()
+       * @param {object} params
+       * @param {string} params.championship_id
+       * @param {string} params.type
+       * @param {number} params.offset
+       * @param {number} params.limit
+       * @returns {Object}
+       */
+      matches: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (!Utils.isString(params.championship_id) || Utils.isStringEmpty(params.championship_id))
+          Utils._WARN_('Invalid parameter', 'championship_id must be of type: String');
+
+        const endpoint = `/${endpointPrefix}/${params.championship_id}/matches`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+
+      /**
+       * @description
+       * @function championships.details()
+       * @param {object} params
+       * @param {string} params.championship_id
+       * @param {string} params.type
+       * @param {number} params.offset
+       * @param {number} params.limit
+       * @returns {Object}
+       */
+      subscriptions: (params = {}) => {
+        this._defaults(params);
+
+        // Must exists and be string
+        if (!Utils.isString(params.championship_id) || Utils.isStringEmpty(params.championship_id))
+          Utils._WARN_('Invalid parameter', 'championship_id must be of type: String');
+
+        const endpoint = `/${endpointPrefix}/${params.championship_id}/subscriptions`;
+        const url = this._buildUrl(endpoint, params);
+
+        return this._request(url);
+      },
+    };
+  }
+
+  /**
    * @description Checks the default parameters
    * @function _defaults()
    * @param {object} params
