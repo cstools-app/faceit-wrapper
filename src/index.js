@@ -1368,7 +1368,7 @@ class FaceitAPI {
     return query ? `${base}?${query}` : base;
   }
 
-  async _request(url, options) {
+  _request(url, options) {
     const key = this.apiKey;
     const headers = {
       Authorization: `Bearer ${key}`,
