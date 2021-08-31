@@ -9,7 +9,7 @@ const Constants = require('./helpers/constants');
  * @author Demian <devaccdemiann@gmail.com>
  * @description A Node.js wrapper for the faceit data api with only two dependencies. For more accurate and up to date documentation visit https://developers.faceit.com/docs/tools/data-api
  * @example
- *     const FaceitAPI = require('wrapper');
+ *     const FaceitAPI = require('@faceit-helpers/wrapper');
  *     const client = new FaceitAPI();
  * @public
  * @version 1.0.0
@@ -1356,6 +1356,13 @@ class FaceitAPI {
     return query ? `${base}?${query}` : base;
   }
 
+  /**
+   * @description Sends request to api
+   * @function _buildQuery()
+   * @param {string} url
+   * @param {object} options
+   * @returns {Promise}
+   */
   _request(url, options) {
     const key = this.apiKey;
     const headers = {
