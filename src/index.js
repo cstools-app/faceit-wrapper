@@ -1358,7 +1358,7 @@ class FaceitAPI {
 
   /**
    * @description Sends request to api
-   * @function _buildQuery()
+   * @function _request()
    * @param {string} url
    * @param {object} options
    * @returns {Promise}
