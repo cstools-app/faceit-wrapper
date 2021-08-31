@@ -1,7 +1,8 @@
 # wrapper
 
 Still need to write documentation and tests for this
-can use but do expect bugs ;P
+
+can be used but do expect bugs ;P
 
 Check https://developers.faceit.com/docs/tools/data-api
 for accurate documentation
