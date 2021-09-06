@@ -39,10 +39,7 @@ get();
 
 ## • Notes on methods
 
-names are as they are listed in the faceit documentation
-e.g. game_id -> game_id
-
-naming conventions
+### Naming conventions
 
 ```
 ROUTE:: /leaderboards/championships/{championship_id}
@@ -64,18 +61,10 @@ ROUTE:: /championships/{championship_id}
 METHOD:: championships.show({championship_id: <id>, <params>})
 ```
 
-Errors are thrown as typeError
+### Params
 
-e.g.
-
-```javascript
-try {
-  // History requires a player_id
-  await client.players.history();
-} catch (e) {
-  console.log(e instanceof TypeError);
-}
-```
+Params are automatically splited into wildcards & query
+Include the params as listed on the Faceit [documentation](https://developers.faceit.com/docs/tools/data-api) per route
 
 ## • License
 
