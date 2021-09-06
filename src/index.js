@@ -1327,7 +1327,7 @@ class FaceitAPI {
     // If exists be String
     if ('offset' in params && !Utils.isNumber(params.type))
       Utils._WARN_('Invalid parameter', 'offset must be of type: Number');
-    if ('limit' in params && !Utils.isNumber(params.type))
+    if ('limit' in params && !Utils.isNumber(params.limit))
       Utils._WARN_('Invalid parameter', 'limit must be of type: Number');
   }
 
