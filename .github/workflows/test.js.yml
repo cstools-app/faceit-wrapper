@@ -27,7 +27,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
       env:
-        KEY: ${{secrets.faceit_token}}
+        KEY: ${{secrets.FACEIT_TOKEN}}
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
