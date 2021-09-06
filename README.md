@@ -1,6 +1,6 @@
 # Faceit Data API faceit-wrapper/Client for NodeJS
 
-[![Test package](https://github.com/faceit-helpers/faceit-wrapper/actions/workflows/test.js.yml/badge.svg?branch=main)](https://github.com/faceit-helpers/faceit-wrapper/actions/workflows/test.js.yml)
+[![Test package](https://github.com/cstools-app/faceit-wrapper/actions/workflows/test.js.yml/badge.svg?branch=main)](https://github.com/cstools-app/faceit-wrapper/actions/workflows/test.js.yml)
 
 ## • Description / Information
 
