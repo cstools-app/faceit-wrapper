@@ -17,6 +17,8 @@ jobs:
           node-version: 14
       - run: npm ci
       - run: npm test
+        env:
+          KEY: ${{secrets.FACEIT_TOKEN}}
       
  publish-npm:
     needs: test
