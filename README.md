@@ -45,19 +45,23 @@ e.g. game_id -> game_id
 naming conventions
 
 ```
-/leaderboards/championships/{championship_id} -> leaderboards.championships.show({championship_id: <id>})
+ROUTE:: /leaderboards/championships/{championship_id}
+METHOD::  leaderboards.championships.show({championship_id: <id>})
 ```
 
 ```
-​/leaderboards​/{leaderboard_id} -> leaderboards.show
+​ROUTE:: /leaderboards​/{leaderboard_id}
+METHOD:: leaderboards.show()
 ```
 
 ```
-/championships championships.get
+ROUTE:: /championships
+METHOD:: championships.get()
 ```
 
 ```
-/championships/{championship_id} championships.show({championship_id: <id>})
+ROUTE:: /championships/{championship_id}
+METHOD:: championships.show({championship_id: <id>, <params>})
 ```
 
 Errors are thrown as typeError
