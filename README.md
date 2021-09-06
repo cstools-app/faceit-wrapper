@@ -15,5 +15,8 @@ naming conventions
 
 ​/leaderboards​/{leaderboard_id} -> leaderboards.show
 
+/championships championships.get
+/championships/{championship_id} championships.show
+
 params in object it seperates query and wildcard automatically so its all in 1 object
 {game_id: '', offset: ''}
