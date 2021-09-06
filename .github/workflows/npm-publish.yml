@@ -8,19 +8,20 @@ on:
     types: [created]
 
 jobs:
- test:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
           node-version: 14
+          cache: 'npm'
       - run: npm ci
       - run: npm test
         env:
           KEY: ${{secrets.FACEIT_TOKEN}}
-      
- publish-npm:
+
+  publish-npm:
     needs: test
     runs-on: ubuntu-latest
     steps:
