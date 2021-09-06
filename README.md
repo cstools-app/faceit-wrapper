@@ -6,9 +6,7 @@
 
 Package uses 2 dependencies [isomorphic-unfetch](https://www.npmjs.com/package/isomorphic-unfetch) and [lodash](https://www.npmjs.com/package/lodash).
 
-Still need to write documentation and tests for this
-
-can be used but there might be bugs ;P
+Still need to write more documentation and tests for this
 
 Check the [documentation](https://developers.faceit.com/docs/tools/data-api)
 for up to date information
@@ -48,12 +46,17 @@ naming conventions
 
 ```
 /leaderboards/championships/{championship_id} -> leaderboards.championships.show({championship_id: <id>})
-​/leaderboards​/{leaderboard_id} -> leaderboards.show
+```
 
+```
+​/leaderboards​/{leaderboard_id} -> leaderboards.show
 ```
 
 ```
 /championships championships.get
+```
+
+```
 /championships/{championship_id} championships.show({championship_id: <id>})
 ```
 
