@@ -43,7 +43,7 @@ get();
 
 ```
 ROUTE:: /leaderboards/championships/{championship_id}
-METHOD::  leaderboards.championships.show({championship_id: <id>})
+METHOD:: leaderboards.championships.show({championship_id: <id>})
 ```
 
 ```
@@ -64,6 +64,7 @@ METHOD:: championships.show({championship_id: <id>, <params>})
 ### Params
 
 Params are automatically splited into wildcards & query
+
 Include the params as listed on the Faceit [documentation](https://developers.faceit.com/docs/tools/data-api) per route
 
 ## • License
