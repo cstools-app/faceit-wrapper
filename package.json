@@ -1,5 +1,5 @@
 {
-  "name": "@faceit-helpers/wrapper",
+  "name": "@cstools/wrapper",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,19 +13,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/faceit-helpers/wrapper"
+    "url": "git+https://github.com/cstools-app/wrapper"
   },
   "keywords": [],
   "author": {
-    "name": "Demian <faceit-helpers>",
+    "name": "Demian <cstools-app>",
     "email": "devaccdemiann@gmail.com",
     "url": "https://demiann.dev"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/faceit-helpers/wrapper/issues"
+    "url": "https://github.com/cstools-app/wrapper/issues"
   },
-  "homepage": "https://github.com/faceit-helpers/wrapper#readme",
+  "homepage": "https://github.com/cstools-app/wrapper#readme",
   "devDependencies": {
     "dotenv": "^10.0.0",
     "eslint": "^7.0.0",
