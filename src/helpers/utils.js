@@ -25,8 +25,7 @@ const isArray = (arr) => {
  * @returns {boolean}
  */
 const isStringEmpty = (str) => {
-  if (!isString(str)) return false;
-  return str.length === 0;
+  return !str || !isString(str) || str.length === 0;
 };
 
 /**

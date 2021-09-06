@@ -40,3 +40,23 @@ test('Get History of a player', async (t) => {
 
   t.assert(res.items.length <= limit);
 });
+
+test('Supply incorrect types on params', async (t) => {
+  const client = new FaceitAPI(KEY);
+  try {
+    client.players.history({ player_id: playerID, game: 'csgo', limit: 'se5drftuyhionjkm' });
+  } catch (e) {
+    t.assert(e instanceof TypeError);
+    t.assert(e.message === 'limit must be of type: Number');
+  }
+});
+
+test('Dont include required params throws errors', async (t) => {
+  const client = new FaceitAPI(KEY);
+  try {
+    await client.players.history();
+  } catch (e) {
+    t.assert(e instanceof TypeError);
+    t.assert(e.message === 'player_id  must be of type: String');
+  }
+});
