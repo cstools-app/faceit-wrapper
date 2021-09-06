@@ -9,9 +9,9 @@ const Constants = require('./helpers/constants');
 /**
  * @class FaceitAPI
  * @author Demian <devaccdemiann@gmail.com>
- * @description A Node.js wrapper for the faceit data api with only two dependencies. For more accurate and up to date documentation visit https://developers.faceit.com/docs/tools/data-api
+ * @description A Node.js faceit-wrapper for the faceit data api with only two dependencies. For more accurate and up to date documentation visit https://developers.faceit.com/docs/tools/data-api
  * @example
- *     const FaceitAPI = require('@faceit-helpers/wrapper');
+ *     const FaceitAPI = require('@cstools-app/faceit-wrapper');
  *     const client = new FaceitAPI();
  * @public
  * @version 1.0.0

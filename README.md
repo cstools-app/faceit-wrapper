@@ -1,6 +1,6 @@
-# Faceit Data API Wrapper/Client for NodeJS
+# Faceit Data API faceit-wrapper/Client for NodeJS
 
-[![Test package](https://github.com/faceit-helpers/wrapper/actions/workflows/test.js.yml/badge.svg?branch=main)](https://github.com/faceit-helpers/wrapper/actions/workflows/test.js.yml)
+[![Test package](https://github.com/faceit-helpers/faceit-wrapper/actions/workflows/test.js.yml/badge.svg?branch=main)](https://github.com/faceit-helpers/faceit-wrapper/actions/workflows/test.js.yml)
 
 ## • Description / Information
 
@@ -14,14 +14,14 @@ for up to date information
 ## • Installation
 
 ```bash
-npm i @faceit-helpers/wrapper
+npm i @cstools-app/faceit-wrapper
 ```
 
 ## • Quick Start Example
 
 ```javascript
-// Import the wrapper library
-const FaceitAPI = require('@faceit-helpers/wrapper');
+// Import the faceit-wrapper library
+const FaceitAPI = require('@cstools-app/faceit-wrapper');
 
 // Initiate the client
 const Client = new FaceitAPI();
