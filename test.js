@@ -5,13 +5,13 @@ const playerID = 'cf5c2089-b4a6-4201-a69b-9fd608429c79';
 
 const FaceitAPI = require('.');
 
-const { KEY } = process.env;
+const { FACEIT_TOKEN } = process.env;
 
 // TODO:: Write tests for every getter
 
 // For now test randomly selected that cover most use cases
 test('Search players return array', async (t) => {
-  const client = new FaceitAPI(KEY);
+  const client = new FaceitAPI(FACEIT_TOKEN);
   const res = await client.search.players({ nickname: 'DotJar', game: 'csgo', country: 'nl' });
 
   t.assert(res.items[0] !== undefined);
@@ -25,7 +25,7 @@ test('Search players return array', async (t) => {
 test('Get History of a player', async (t) => {
   const limit = 5;
 
-  const client = new FaceitAPI(KEY);
+  const client = new FaceitAPI(FACEIT_TOKEN);
   const res = await client.players.history({ player_id: playerID, game: 'csgo', limit });
 
   t.assert(res.items[0] !== undefined);
@@ -42,7 +42,7 @@ test('Get History of a player', async (t) => {
 });
 
 test('Supply incorrect types on params', async (t) => {
-  const client = new FaceitAPI(KEY);
+  const client = new FaceitAPI(FACEIT_TOKEN);
   try {
     client.players.history({ player_id: playerID, game: 'csgo', limit: 'se5drftuyhionjkm' });
   } catch (e) {
@@ -52,7 +52,7 @@ test('Supply incorrect types on params', async (t) => {
 });
 
 test('Dont include required params throws errors', async (t) => {
-  const client = new FaceitAPI(KEY);
+  const client = new FaceitAPI(FACEIT_TOKEN);
   try {
     await client.players.history();
   } catch (e) {
