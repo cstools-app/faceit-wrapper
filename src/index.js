@@ -46,7 +46,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.game)) Utils._WARN_('Invalid parameter', 'game must be of type: String');
+        if (Utils.isStringEmpty(params.game)) return new Error('game must be of type: String');
 
         const endpoint = `/${endpointPrefix}`;
         const url = this._buildUrl(endpoint, {});
@@ -66,8 +66,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.championship_id))
-          Utils._WARN_('Invalid parameter', 'championship_id must be of type: String');
+        if (Utils.isStringEmpty(params.championship_id)) return new Error('championship_id must be of type: String');
 
         const query = _.pick(params, ['expanded']);
 
@@ -91,8 +90,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.championship_id))
-          Utils._WARN_('Invalid parameter', 'championship_id must be of type: String');
+        if (Utils.isStringEmpty(params.championship_id)) return new Error('championship_id must be of type: String');
 
         const query = _.pick(params, ['type', 'offset', 'limit']);
 
@@ -116,8 +114,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.championship_id))
-          Utils._WARN_('Invalid parameter', 'championship_id must be of type: String');
+        if (Utils.isStringEmpty(params.championship_id)) return new Error('championship_id must be of type: String');
 
         const query = _.pick(params, ['offset', 'limit']);
 
@@ -164,7 +161,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.game_id)) Utils._WARN_('Invalid parameter', 'game_id must be of type: String');
+        if (Utils.isStringEmpty(params.game_id)) return new Error('game_id must be of type: String');
 
         const endpoint = `/${endpointPrefix}/${params.game_id}`;
         const url = this._buildUrl(endpoint, {});
@@ -183,7 +180,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.game_id)) Utils._WARN_('Invalid parameter', 'game_id must be of type: String');
+        if (Utils.isStringEmpty(params.game_id)) return new Error('game_id must be of type: String');
 
         const endpoint = `/${endpointPrefix}/${params.game_id}/parent`;
         const url = this._buildUrl(endpoint, {});
@@ -212,7 +209,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.hub_id)) Utils._WARN_('Invalid parameter', 'hub_id must be of type: String');
+        if (Utils.isStringEmpty(params.hub_id)) return new Error('hub_id must be of type: String');
 
         const query = _.pick(params, ['expanded']);
 
@@ -236,7 +233,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.hub_id)) Utils._WARN_('Invalid parameter', 'hub_id must be of type: String');
+        if (Utils.isStringEmpty(params.hub_id)) return new Error('hub_id must be of type: String');
 
         const query = _.pick(params, ['type', 'offset', 'limit']);
 
@@ -259,7 +256,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.hub_id)) Utils._WARN_('Invalid parameter', 'hub_id must be of type: String');
+        if (Utils.isStringEmpty(params.hub_id)) return new Error('hub_id must be of type: String');
 
         const query = _.pick(params, ['offset', 'limit']);
 
@@ -282,7 +279,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.hub_id)) Utils._WARN_('Invalid parameter', 'hub_id must be of type: String');
+        if (Utils.isStringEmpty(params.hub_id)) return new Error('hub_id must be of type: String');
 
         const query = _.pick(params, ['offset', 'limit']);
 
@@ -303,7 +300,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.hub_id)) Utils._WARN_('Invalid parameter', 'hub_id must be of type: String');
+        if (Utils.isStringEmpty(params.hub_id)) return new Error('hub_id must be of type: String');
 
         const endpoint = `/${endpointPrefix}/${params.hub_id}/rules`;
         const url = this._buildUrl(endpoint, {});
@@ -324,7 +321,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.hub_id)) Utils._WARN_('Invalid parameter', 'hub_id must be of type: String');
+        if (Utils.isStringEmpty(params.hub_id)) return new Error('hub_id must be of type: String');
 
         const query = _.pick(params, ['offset', 'limit']);
 
@@ -362,8 +359,7 @@ class FaceitAPI {
             this._defaults(params);
 
             // Must exists and be String
-            if (Utils.isStringEmpty(params.championship_id))
-              Utils._WARN_('Invalid parameter', 'championship_id must be of type: String');
+            if (Utils.isStringEmpty(params.championship_id)) return new Error('championship_id must be of type: String');
 
             const query = _.pick(params, ['offset', 'limit']);
 
@@ -387,11 +383,10 @@ class FaceitAPI {
             this._defaults(params);
 
             // Must exists and be String
-            if (Utils.isStringEmpty(params.championship_id))
-              Utils._WARN_('Invalid parameter', 'championship_id must be of type: String');
+            if (Utils.isStringEmpty(params.championship_id)) return new Error('championship_id must be of type: String');
 
             // Must exists and be String
-            if (Utils.isStringEmpty(params.group_id)) Utils._WARN_('Invalid parameter', 'group_id must be of type: String');
+            if (Utils.isStringEmpty(params.group_id)) return new Error('group_id must be of type: String');
 
             const query = _.pick(params, ['offset', 'limit']);
 
@@ -418,7 +413,7 @@ class FaceitAPI {
             this._defaults(params);
 
             // Must exists and be String
-            if (Utils.isStringEmpty(params.hub_id)) Utils._WARN_('Invalid parameter', 'hub_id must be of type: String');
+            if (Utils.isStringEmpty(params.hub_id)) return new Error('hub_id must be of type: String');
 
             const query = _.pick(params, ['offset', 'limit']);
 
@@ -441,7 +436,7 @@ class FaceitAPI {
             this._defaults(params);
 
             // Must exists and be String
-            if (Utils.isStringEmpty(params.hub_id)) Utils._WARN_('Invalid parameter', 'hub_id must be of type: String');
+            if (Utils.isStringEmpty(params.hub_id)) return new Error('hub_id must be of type: String');
 
             const query = _.pick(params, ['offset', 'limit']);
 
@@ -465,11 +460,10 @@ class FaceitAPI {
             this._defaults(params);
 
             // Must exists and be String
-            if (Utils.isStringEmpty(params.hub_id)) Utils._WARN_('Invalid parameter', 'hub_id must be of type: String');
+            if (Utils.isStringEmpty(params.hub_id)) return new Error('hub_id must be of type: String');
 
             // Must exists and be String
-            if (Utils.isStringEmpty(params.season_id))
-              Utils._WARN_('Invalid parameter', 'season_id must be of type: String');
+            if (Utils.isStringEmpty(params.season_id)) return new Error('season_id must be of type: String');
 
             const query = _.pick(params, ['offset', 'limit']);
 
@@ -495,8 +489,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.leaderboard_id))
-          Utils._WARN_('Invalid parameter', 'leaderboard_id must be of type: String');
+        if (Utils.isStringEmpty(params.leaderboard_id)) return new Error('leaderboard_id must be of type: String');
 
         const query = _.pick(params, ['offset', 'limit']);
 
@@ -526,7 +519,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.match_id)) Utils._WARN_('Invalid parameter', 'match_id must be of type: String');
+        if (Utils.isStringEmpty(params.match_id)) return new Error('match_id must be of type: String');
 
         const endpoint = `/${endpointPrefix}/${params.match_id}`;
         const url = this._buildUrl(endpoint, {});
@@ -545,7 +538,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.match_id)) Utils._WARN_('Invalid parameter', 'match_id must be of type: String');
+        if (Utils.isStringEmpty(params.match_id)) return new Error('match_id must be of type: String');
 
         const endpoint = `/${endpointPrefix}/${params.match_id}/stats`;
         const url = this._buildUrl(endpoint, {});
@@ -573,7 +566,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.name)) Utils._WARN_('Invalid parameter', 'name must be of type: String');
+        if (Utils.isStringEmpty(params.name)) return new Error('name must be of type: String');
 
         const endpoint = `/${endpointPrefix}`;
         const url = this._buildUrl(endpoint, {});
@@ -592,8 +585,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.organizer_id))
-          Utils._WARN_('Invalid parameter', 'organizer_id  must be of type: String');
+        if (Utils.isStringEmpty(params.organizer_id)) return new Error('organizer_id  must be of type: String');
 
         const endpoint = `/${endpointPrefix}/${params.organizer_id}`;
         const url = this._buildUrl(endpoint, {});
@@ -614,8 +606,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.organizer_id))
-          Utils._WARN_('Invalid parameter', 'organizer_id  must be of type: String');
+        if (Utils.isStringEmpty(params.organizer_id)) return new Error('organizer_id  must be of type: String');
 
         const query = _.pick(params, ['offset', 'limit']);
 
@@ -638,8 +629,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.organizer_id))
-          Utils._WARN_('Invalid parameter', 'organizer_id  must be of type: String');
+        if (Utils.isStringEmpty(params.organizer_id)) return new Error('organizer_id  must be of type: String');
 
         const endpoint = `/${endpointPrefix}/${params.organizer_id}/games`;
         const url = this._buildUrl(endpoint, {});
@@ -660,8 +650,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.organizer_id))
-          Utils._WARN_('Invalid parameter', 'organizer_id must be of type: String');
+        if (Utils.isStringEmpty(params.organizer_id)) return new Error('organizer_id must be of type: String');
 
         const query = _.pick(params, ['offset', 'limit']);
 
@@ -685,8 +674,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.organizer_id))
-          Utils._WARN_('Invalid parameter', 'organizer_id must be of type: String');
+        if (Utils.isStringEmpty(params.organizer_id)) return new Error('organizer_id must be of type: String');
 
         const query = _.pick(params, ['type', 'offset', 'limit']);
 
@@ -734,7 +722,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.player_id)) Utils._WARN_('Invalid parameter', 'player_id  must be of type: String');
+        if (Utils.isStringEmpty(params.player_id)) return new Error('player_id  must be of type: String');
 
         const endpoint = `/${endpointPrefix}/${params.player_id}`;
         const url = this._buildUrl(endpoint, {});
@@ -758,12 +746,11 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.player_id)) Utils._WARN_('Invalid parameter', 'player_id  must be of type: String');
+        if (Utils.isStringEmpty(params.player_id)) return new Error('player_id  must be of type: String');
 
         // If exists be String
-        if ('from' in params && !Utils.isNumber(params.from))
-          Utils._WARN_('Invalid parameter', 'from must be of type: String');
-        if ('to' in params && !Utils.isNumber(params.to)) Utils._WARN_('Invalid parameter', 'to must be of type: String');
+        if ('from' in params && !Utils.isNumber(params.from)) return new Error('from must be of type: String');
+        if ('to' in params && !Utils.isNumber(params.to)) return new Error('to must be of type: String');
 
         const query = _.pick(params, ['from', 'to', 'offset', 'limit']);
 
@@ -786,7 +773,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.player_id)) Utils._WARN_('Invalid parameter', 'player_id  must be of type: String');
+        if (Utils.isStringEmpty(params.player_id)) return new Error('player_id  must be of type: String');
 
         const query = _.pick(params, ['offset', 'limit']);
 
@@ -808,10 +795,10 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.player_id)) Utils._WARN_('Invalid parameter', 'player_id must be of type: String');
+        if (Utils.isStringEmpty(params.player_id)) return new Error('player_id must be of type: String');
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.game_id)) Utils._WARN_('Invalid parameter', 'game_id must be of type: String');
+        if (Utils.isStringEmpty(params.game_id)) return new Error('game_id must be of type: String');
 
         const endpoint = `/${endpointPrefix}/${params.player_id}/stats/${params.game_id}`;
         const url = this._buildUrl(endpoint, {});
@@ -832,7 +819,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.player_id)) Utils._WARN_('Invalid parameter', 'player_id must be of type: String');
+        if (Utils.isStringEmpty(params.player_id)) return new Error('player_id must be of type: String');
 
         const query = _.pick(params, ['offset', 'limit']);
 
@@ -866,14 +853,13 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.game_id)) Utils._WARN_('Invalid parameter', 'game_id must be of type: String');
+        if (Utils.isStringEmpty(params.game_id)) return new Error('game_id must be of type: String');
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.region)) Utils._WARN_('Invalid parameter', 'region must be of type: String');
+        if (Utils.isStringEmpty(params.region)) return new Error('region must be of type: String');
 
         // Must exists and be String
-        if ('country' in params && Utils.isStringEmpty(params.country))
-          Utils._WARN_('Invalid parameter', 'country must be of type: String');
+        if ('country' in params && Utils.isStringEmpty(params.country)) return new Error('country must be of type: String');
 
         const query = _.pick(params, ['country', 'offset', 'limit']);
 
@@ -898,17 +884,16 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.game_id)) Utils._WARN_('Invalid parameter', 'game_id must be of type: String');
+        if (Utils.isStringEmpty(params.game_id)) return new Error('game_id must be of type: String');
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.region)) Utils._WARN_('Invalid parameter', 'region must be of type: String');
+        if (Utils.isStringEmpty(params.region)) return new Error('region must be of type: String');
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.player_id)) Utils._WARN_('Invalid parameter', 'player_id must be of type: String');
+        if (Utils.isStringEmpty(params.player_id)) return new Error('player_id must be of type: String');
 
         // Must exists and be String
-        if ('country' in params && Utils.isStringEmpty(params.country))
-          Utils._WARN_('Invalid parameter', 'country must be of type: String');
+        if ('country' in params && Utils.isStringEmpty(params.country)) return new Error('country must be of type: String');
 
         const query = _.pick(params, ['country', 'limit']);
 
@@ -943,15 +928,13 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.name)) Utils._WARN_('Invalid parameter', 'name must be of type: String');
+        if (Utils.isStringEmpty(params.name)) return new Error('name must be of type: String');
 
         // Must exists and be String
-        if ('game' in params && Utils.isStringEmpty(params.game))
-          Utils._WARN_('Invalid parameter', 'game must be of type: String');
+        if ('game' in params && Utils.isStringEmpty(params.game)) return new Error('game must be of type: String');
 
         // Must exists and be String
-        if ('region' in params && Utils.isStringEmpty(params.region))
-          Utils._WARN_('Invalid parameter', 'region must be of type: String');
+        if ('region' in params && Utils.isStringEmpty(params.region)) return new Error('region must be of type: String');
 
         const query = _.pick(params, ['name', 'game', 'region', 'offset', 'limit']);
 
@@ -976,15 +959,13 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.name)) Utils._WARN_('Invalid parameter', 'name must be of type: String');
+        if (Utils.isStringEmpty(params.name)) return new Error('name must be of type: String');
 
         // Must exists and be String
-        if ('game' in params && Utils.isStringEmpty(params.game))
-          Utils._WARN_('Invalid parameter', 'game must be of type: String');
+        if ('game' in params && Utils.isStringEmpty(params.game)) return new Error('game must be of type: String');
 
         // Must exists and be String
-        if ('region' in params && Utils.isStringEmpty(params.region))
-          Utils._WARN_('Invalid parameter', 'region must be of type: String');
+        if ('region' in params && Utils.isStringEmpty(params.region)) return new Error('region must be of type: String');
 
         const query = _.pick(params, ['name', 'game', 'region', 'offset', 'limit']);
 
@@ -1007,7 +988,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.name)) Utils._WARN_('Invalid parameter', 'name must be of type: String');
+        if (Utils.isStringEmpty(params.name)) return new Error('name must be of type: String');
 
         const query = _.pick(params, ['name', 'offset', 'limit']);
 
@@ -1032,15 +1013,13 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.nickname)) Utils._WARN_('Invalid parameter', 'nickname must be of type: String');
+        if (Utils.isStringEmpty(params.nickname)) return new Error('nickname must be of type: String');
 
         // Must exists and be String
-        if ('game' in params && Utils.isStringEmpty(params.game))
-          Utils._WARN_('Invalid parameter', 'game must be of type: String');
+        if ('game' in params && Utils.isStringEmpty(params.game)) return new Error('game must be of type: String');
 
         // Must exists and be String
-        if ('country' in params && Utils.isStringEmpty(params.country))
-          Utils._WARN_('Invalid parameter', 'country must be of type: String');
+        if ('country' in params && Utils.isStringEmpty(params.country)) return new Error('country must be of type: String');
 
         const query = _.pick(params, ['nickname', 'country', 'offset', 'limit']);
 
@@ -1064,11 +1043,10 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.nickname)) Utils._WARN_('Invalid parameter', 'nickname must be of type: String');
+        if (Utils.isStringEmpty(params.nickname)) return new Error('nickname must be of type: String');
 
         // Must exists and be String
-        if ('game' in params && Utils.isStringEmpty(params.game))
-          Utils._WARN_('Invalid parameter', 'game must be of type: String');
+        if ('game' in params && Utils.isStringEmpty(params.game)) return new Error('game must be of type: String');
 
         const query = _.pick(params, ['nickname', 'country', 'offset', 'limit']);
 
@@ -1094,15 +1072,13 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.name)) Utils._WARN_('Invalid parameter', 'name must be of type: String');
+        if (Utils.isStringEmpty(params.name)) return new Error('name must be of type: String');
 
         // Must exists and be String
-        if ('game' in params && Utils.isStringEmpty(params.game))
-          Utils._WARN_('Invalid parameter', 'game must be of type: String');
+        if ('game' in params && Utils.isStringEmpty(params.game)) return new Error('game must be of type: String');
 
         // Must exists and be String
-        if ('region' in params && Utils.isStringEmpty(params.region))
-          Utils._WARN_('Invalid parameter', 'region must be of type: String');
+        if ('region' in params && Utils.isStringEmpty(params.region)) return new Error('region must be of type: String');
 
         const query = _.pick(params, ['name', 'game', 'region', 'type', 'offset', 'limit']);
 
@@ -1132,7 +1108,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.team_id)) Utils._WARN_('Invalid parameter', 'team_id  must be of type: String');
+        if (Utils.isStringEmpty(params.team_id)) return new Error('team_id  must be of type: String');
 
         const endpoint = `/${endpointPrefix}/${params.team_id}`;
         const url = this._buildUrl(endpoint, {});
@@ -1152,9 +1128,9 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.team_id)) Utils._WARN_('Invalid parameter', 'team_id  must be of type: String');
+        if (Utils.isStringEmpty(params.team_id)) return new Error('team_id  must be of type: String');
         // Must exists and be String
-        if (Utils.isStringEmpty(params.game_id)) Utils._WARN_('Invalid parameter', 'game_id  must be of type: String');
+        if (Utils.isStringEmpty(params.game_id)) return new Error('game_id  must be of type: String');
 
         const endpoint = `/${endpointPrefix}/${params.team_id}/stats/${params.game_id}`;
         const url = this._buildUrl(endpoint, {});
@@ -1174,7 +1150,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.team_id)) Utils._WARN_('Invalid parameter', 'team_id  must be of type: String');
+        if (Utils.isStringEmpty(params.team_id)) return new Error('team_id  must be of type: String');
 
         const query = _.pick(params, ['offset', 'limit']);
 
@@ -1224,8 +1200,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.tournament_id))
-          Utils._WARN_('Invalid parameter', 'tournament_id  must be of type: String');
+        if (Utils.isStringEmpty(params.tournament_id)) return new Error('tournament_id  must be of type: String');
 
         const query = _.pick(params, ['expanded']);
 
@@ -1246,8 +1221,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.tournament_id))
-          Utils._WARN_('Invalid parameter', 'tournament_id  must be of type: String');
+        if (Utils.isStringEmpty(params.tournament_id)) return new Error('tournament_id  must be of type: String');
 
         const endpoint = `/${endpointPrefix}/${params.tournament_id}/brackets`;
         const url = this._buildUrl(endpoint, {});
@@ -1268,8 +1242,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.tournament_id))
-          Utils._WARN_('Invalid parameter', 'tournament_id  must be of type: String');
+        if (Utils.isStringEmpty(params.tournament_id)) return new Error('tournament_id  must be of type: String');
 
         const query = _.pick(params, ['offset', 'limit']);
 
@@ -1292,8 +1265,7 @@ class FaceitAPI {
         this._defaults(params);
 
         // Must exists and be String
-        if (Utils.isStringEmpty(params.tournament_id))
-          Utils._WARN_('Invalid parameter', 'tournament_id  must be of type: String');
+        if (Utils.isStringEmpty(params.tournament_id)) return new Error('tournament_id  must be of type: String');
 
         const query = _.pick(params, ['offset', 'limit']);
 
@@ -1315,20 +1287,17 @@ class FaceitAPI {
    */
   _defaults(params) {
     // Must be Object
-    if (!Utils.isObject(params)) Utils._WARN_('Invalid parameter', 'params must be of type: Object');
+    if (!Utils.isObject(params)) return new Error('params must be of type: Object');
 
     // If exists be String
-    if ('type' in params && !Utils.isString(params.type)) Utils._WARN_('Invalid parameter', 'type must be of type: String');
+    if ('type' in params && !Utils.isString(params.type)) return new Error('type must be of type: String');
 
     // Must exists and be Array
-    if ('expanded' in params && !Utils.isArray(params.expanded))
-      Utils._WARN_('Invalid parameter', 'expanded must be of type: Array[String]');
+    if ('expanded' in params && !Utils.isArray(params.expanded)) return new Error('expanded must be of type: Array[String]');
 
     // If exists be String
-    if ('offset' in params && !Utils.isNumber(params.type))
-      Utils._WARN_('Invalid parameter', 'offset must be of type: Number');
-    if ('limit' in params && !Utils.isNumber(params.limit))
-      Utils._WARN_('Invalid parameter', 'limit must be of type: Number');
+    if ('offset' in params && !Utils.isNumber(params.type)) return new Error('offset must be of type: Number');
+    if ('limit' in params && !Utils.isNumber(params.limit)) return new Error('limit must be of type: Number');
   }
 
   /**

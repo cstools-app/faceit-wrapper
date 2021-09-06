@@ -62,22 +62,6 @@ const isNumber = (num) => {
   return !Number.isNaN(num) && !Number.isNaN(parseInt(num));
 };
 
-/**
- * @description Internal helper to emit a warning to the console
- * @function _WARN_
- * @param {string} title
- * @param {string} detail
- * @returns {boolean}
- */
-const _WARN_ = (title = '', detail = '') => {
-  process.emitWarning(title, {
-    detail,
-    code: 'FaceitAPI',
-  });
-
-  return true;
-};
-
 module.exports = {
   isString,
   isStringEmpty,
@@ -85,5 +69,4 @@ module.exports = {
   isObject,
   isNumber,
   isArray,
-  _WARN_,
 };
