@@ -4,6 +4,12 @@
   "description": "",
   "main": "index.js",
   "private": false,
+  "files": [
+    "index.js",
+    "src/index.js",
+    "src/helpers/constants.js",
+    "src/helpers/utils.js"
+  ],
   "scripts": {
     "test": "ava",
     "lint": "eslint .",
