@@ -1,5 +1,8 @@
 # Faceit Data API faceit-wrapper/Client for NodeJS
 
+<span class="badge-npmversion"><a href="https://www.npmjs.com/package/@cstools-app/faceit-wrapper" title="View this project on NPM"><img src="https://img.shields.io/npm/v/@cstools-app/faceit-wrapper.svg" alt="NPM version"/></a></span>
+<span class="badge-npmdownloads"><a href="https://npmjs.org/package/@cstools-app/faceit-wrapper" title="View this project on NPM"><img src="https://img.shields.io/npm/dm/@cstools-app/faceit-wrapper.svg" alt="NPM downloads" /></a></span>
+[![CodeQL](https://github.com/@stools-app/faceit-wrapper/actions/workflows/codeql-analysis.yml/badge.svg?branch=main)](https://github.com/cstools-app/faceit-wrapper/actions/workflows/codeql-analysis.yml)
 [![Test package](https://github.com/cstools-app/faceit-wrapper/actions/workflows/test.js.yml/badge.svg?branch=main)](https://github.com/cstools-app/faceit-wrapper/actions/workflows/test.js.yml)
 
 ## • Description / Information
