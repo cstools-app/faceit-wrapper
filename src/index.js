@@ -14,7 +14,6 @@ const Constants = require('./helpers/constants');
  *     const FaceitAPI = require('@cstools-app/faceit-wrapper');
  *     const client = new FaceitAPI();
  * @public
- * @version 0.0.2
  * @license MIT
  */
 class FaceitAPI {
