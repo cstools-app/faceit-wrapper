@@ -1,18 +1,33 @@
 require('dotenv').config();
 const test = require('ava');
 
+const FaceitAPI = require('.');
+
+const playerName = 'DotJar';
 const playerID = 'cf5c2089-b4a6-4201-a69b-9fd608429c79';
 
-const FaceitAPI = require('.');
+const steamID = '76561198250920834';
 
 const { FACEIT_TOKEN } = process.env;
 
 // TODO:: Write tests for every getter
 
 // For now test randomly selected that cover most use cases
-test('Search players return array', async (t) => {
+test('Search players from steamID', async (t) => {
   const client = new FaceitAPI(FACEIT_TOKEN);
-  const res = await client.search.players({ nickname: 'DotJar', game: 'csgo', country: 'nl' });
+  const res = await client.search.players({ nickname: steamID, game: 'csgo', country: 'nl' });
+
+  t.assert(res.items[0] !== undefined);
+
+  t.assert('player_id' in res.items[0]);
+  t.assert('nickname' in res.items[0]);
+  t.assert('status' in res.items[0]);
+  t.assert('country' in res.items[0]);
+});
+
+test('Search players returns correct profile', async (t) => {
+  const client = new FaceitAPI(FACEIT_TOKEN);
+  const res = await client.search.players({ nickname: playerName, game: 'csgo', country: 'nl' });
 
   t.assert(res.items[0] !== undefined);
 
