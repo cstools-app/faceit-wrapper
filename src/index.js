@@ -40,7 +40,7 @@ class FaceitAPI {
        * @param {String} params.type
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Object}
+       * @returns {Promise}
        */
       all: (params = {}) => {
         this._defaults(params);
@@ -60,7 +60,7 @@ class FaceitAPI {
        * @param {Object} params
        * @param {String} params.championship_id
        * @param {Array[String]} params.expanded
-       * @returns {Object}
+       * @returns {Promise}
        */
       show: (params = {}) => {
         this._defaults(params);
@@ -84,7 +84,7 @@ class FaceitAPI {
        * @param {String} params.type
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Object}
+       * @returns {Promise}
        */
       matches: (params = {}) => {
         this._defaults(params);
@@ -108,7 +108,7 @@ class FaceitAPI {
        * @param {String} params.type
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Object}
+       * @returns {Promise}
        */
       subscriptions: (params = {}) => {
         this._defaults(params);
@@ -139,7 +139,7 @@ class FaceitAPI {
        * @param {Object} params
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Object}
+       * @returns {Promise}
        */
       all: (params = {}) => {
         this._defaults(params);
@@ -155,7 +155,7 @@ class FaceitAPI {
        * @function games.show()
        * @param {Object} params
        * @param {String} params.game_id
-       * @returns {Object}
+       * @returns {Promise}
        */
       show: (params = {}) => {
         this._defaults(params);
@@ -174,7 +174,7 @@ class FaceitAPI {
        * @function games.parent()
        * @param {Object} params
        * @param {String} params.game_id
-       * @returns {Object}
+       * @returns {Promise}
        */
       parent: (params = {}) => {
         this._defaults(params);
@@ -203,7 +203,7 @@ class FaceitAPI {
        * @param {Object} params
        * @param {String} params.hub_id
        * @param {Array[String]} params.expanded
-       * @returns {Object}
+       * @returns {Promise}
        */
       show: (params = {}) => {
         this._defaults(params);
@@ -227,7 +227,7 @@ class FaceitAPI {
        * @param {String} params.type
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Object}
+       * @returns {Promise}
        */
       matches: (params = {}) => {
         this._defaults(params);
@@ -250,7 +250,7 @@ class FaceitAPI {
        * @param {String} params.hub_id
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Object}
+       * @returns {Promise}
        */
       members: (params = {}) => {
         this._defaults(params);
@@ -273,7 +273,7 @@ class FaceitAPI {
        * @param {String} params.hub_id
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Object}
+       * @returns {Promise}
        */
       roles: (params = {}) => {
         this._defaults(params);
@@ -294,7 +294,7 @@ class FaceitAPI {
        * @function hubs.rules()
        * @param {Object} params
        * @param {String} params.hub_id
-       * @returns {Object}
+       * @returns {Promise}
        */
       rules: (params = {}) => {
         this._defaults(params);
@@ -315,7 +315,7 @@ class FaceitAPI {
        * @param {String} params.hub_id
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Object}
+       * @returns {Promise}
        */
       stats: (params = {}) => {
         this._defaults(params);
@@ -353,7 +353,7 @@ class FaceitAPI {
            * @param {String} params.championship_id
            * @param {Number} params.offset
            * @param {Number} params.limit
-           * @returns {Object}
+           * @returns {Promise}
            */
           show: (params = {}) => {
             this._defaults(params);
@@ -377,7 +377,7 @@ class FaceitAPI {
            * @param {String} params.group_id
            * @param {Number} params.offset
            * @param {Number} params.limit
-           * @returns {Object}
+           * @returns {Promise}
            */
           group: (params = {}) => {
             this._defaults(params);
@@ -407,7 +407,7 @@ class FaceitAPI {
            * @param {String} params.hub_id
            * @param {Number} params.offset
            * @param {Number} params.limit
-           * @returns {Object}
+           * @returns {Promise}
            */
           show: (params = {}) => {
             this._defaults(params);
@@ -430,7 +430,7 @@ class FaceitAPI {
            * @param {String} params.hub_id
            * @param {Number} params.offset
            * @param {Number} params.limit
-           * @returns {Object}
+           * @returns {Promise}
            */
           general: (params = {}) => {
             this._defaults(params);
@@ -454,7 +454,7 @@ class FaceitAPI {
            * @param {String} params.season_id
            * @param {Number} params.offset
            * @param {Number} params.limit
-           * @returns {Object}
+           * @returns {Promise}
            */
           season: (params = {}) => {
             this._defaults(params);
@@ -483,7 +483,7 @@ class FaceitAPI {
        * @param {Array[String]} params.expanded
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Object}
+       * @returns {Promise}
        */
       show: (params = {}) => {
         this._defaults(params);
@@ -513,7 +513,7 @@ class FaceitAPI {
        * @function matches.show()
        * @param {Object} params
        * @param {String} params.match_id
-       * @returns {Object}
+       * @returns {Promise}
        */
       show: (params = {}) => {
         this._defaults(params);
@@ -532,7 +532,7 @@ class FaceitAPI {
        * @function matches.stats()
        * @param {Object} params
        * @param {String} params.match_id
-       * @returns {Object}
+       * @returns {Promise}
        */
       stats: (params = {}) => {
         this._defaults(params);
@@ -560,7 +560,7 @@ class FaceitAPI {
        * @function organizers.get()
        * @param {Object} params
        * @param {String} params.name
-       * @returns {Object}
+       * @returns {Promise}
        */
       get: (params = {}) => {
         this._defaults(params);
@@ -579,7 +579,7 @@ class FaceitAPI {
        * @function organizers.show()
        * @param {Object} params
        * @param {String} params.organizer_id
-       * @returns {Object}
+       * @returns {Promise}
        */
       show: (params = {}) => {
         this._defaults(params);
@@ -600,7 +600,7 @@ class FaceitAPI {
        * @param {String} params.organizer_id
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Object}
+       * @returns {Promise}
        */
       championships: (params = {}) => {
         this._defaults(params);
@@ -623,7 +623,7 @@ class FaceitAPI {
        * @param {String} params.organizer_id
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Object}
+       * @returns {Promise}
        */
       games: (params = {}) => {
         this._defaults(params);
@@ -644,7 +644,7 @@ class FaceitAPI {
        * @param {String} params.organizer_id
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Object}
+       * @returns {Promise}
        */
       hubs: (params = {}) => {
         this._defaults(params);
@@ -668,7 +668,7 @@ class FaceitAPI {
        * @param {String} params.type
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Object}
+       * @returns {Promise}
        */
       tournaments: (params = {}) => {
         this._defaults(params);
@@ -700,7 +700,7 @@ class FaceitAPI {
        * @param {String} params.nickname
        * @param {String} params.game
        * @param {String} params.game_player_id
-       * @returns {Object}
+       * @returns {Promise}
        */
       get: (params = {}) => {
         this._defaults(params);
@@ -716,7 +716,7 @@ class FaceitAPI {
        * @function players.show()
        * @param {Object} params
        * @param {String} params.player_id
-       * @returns {Object}
+       * @returns {Promise}
        */
       show: (params = {}) => {
         this._defaults(params);
@@ -740,7 +740,7 @@ class FaceitAPI {
        * @param {Number} params.to
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Object}
+       * @returns {Promise}
        */
       history: (params = {}) => {
         this._defaults(params);
@@ -767,7 +767,7 @@ class FaceitAPI {
        * @param {String} params.player_id
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Object}
+       * @returns {Promise}
        */
       hubs: (params = {}) => {
         this._defaults(params);
@@ -789,7 +789,7 @@ class FaceitAPI {
        * @param {Object} params
        * @param {String} params.player_id
        * @param {String} params.game_id
-       * @returns {Object}
+       * @returns {Promise}
        */
       stats: (params = {}) => {
         this._defaults(params);
@@ -813,7 +813,7 @@ class FaceitAPI {
        * @param {String} params.player_id
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Object}
+       * @returns {Promise}
        */
       tournaments: (params = {}) => {
         this._defaults(params);
@@ -847,7 +847,7 @@ class FaceitAPI {
        * @param {String} params.country
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Object}
+       * @returns {Promise}
        */
       game: (params = {}) => {
         this._defaults(params);
@@ -879,7 +879,7 @@ class FaceitAPI {
        * @param {String} params.player_id
        * @param {String} params.country
        * @param {Number} params.limit
-       * @returns {Object}
+       * @returns {Promise}
        */
       player: (params = {}) => {
         this._defaults(params);
@@ -924,7 +924,7 @@ class FaceitAPI {
        * @param {String} params.type
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Object}
+       * @returns {Promise}
        */
       championships: (params = {}) => {
         this._defaults(params);
@@ -955,7 +955,7 @@ class FaceitAPI {
        * @param {String} params.region
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Object}
+       * @returns {Promise}
        */
       hubs: (params = {}) => {
         this._defaults(params);
@@ -984,7 +984,7 @@ class FaceitAPI {
        * @param {String} params.name
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Object}
+       * @returns {Promise}
        */
       organizers: (params = {}) => {
         this._defaults(params);
@@ -1009,7 +1009,7 @@ class FaceitAPI {
        * @param {String} params.country
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Object}
+       * @returns {Promise}
        */
       players: (params = {}) => {
         this._defaults(params);
@@ -1040,7 +1040,7 @@ class FaceitAPI {
        * @param {String} params.game
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Object}
+       * @returns {Promise}
        */
       teams: (params = {}) => {
         this._defaults(params);
@@ -1069,7 +1069,7 @@ class FaceitAPI {
        * @param {String} params.type
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Object}
+       * @returns {Promise}
        */
       tournaments: (params = {}) => {
         this._defaults(params);
@@ -1105,7 +1105,7 @@ class FaceitAPI {
        * @function teams.show()
        * @param {Object} params
        * @param {String} params.team_id
-       * @returns {Object}
+       * @returns {Promise}
        */
       show: (params = {}) => {
         this._defaults(params);
@@ -1125,7 +1125,7 @@ class FaceitAPI {
        * @param {Object} params
        * @param {String} params.team_id
        * @param {String} params.game_id
-       * @returns {Object}
+       * @returns {Promise}
        */
       stats: (params = {}) => {
         this._defaults(params);
@@ -1147,7 +1147,7 @@ class FaceitAPI {
        * @param {Object} params
        * @param {String} params.team_id
        * @param {String} params.game_id
-       * @returns {Object}
+       * @returns {Promise}
        */
       tournaments: (params = {}) => {
         this._defaults(params);
@@ -1180,7 +1180,7 @@ class FaceitAPI {
        * @param {String} params.region
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Object}
+       * @returns {Promise}
        */
       get: (params = {}) => {
         this._defaults(params);
@@ -1197,7 +1197,7 @@ class FaceitAPI {
        * @param {Object} params
        * @param {String} params.tournament_id
        * @param {Array[String]} params.expanded
-       * @returns {Object}
+       * @returns {Promise}
        */
       show: (params = {}) => {
         this._defaults(params);
@@ -1218,7 +1218,7 @@ class FaceitAPI {
        * @function tournaments.brackets()
        * @param {Object} params
        * @param {String} params.tournament_id
-       * @returns {Object}
+       * @returns {Promise}
        */
       brackets: (params = {}) => {
         this._defaults(params);
@@ -1239,7 +1239,7 @@ class FaceitAPI {
        * @param {String} params.tournament_id
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Object}
+       * @returns {Promise}
        */
       matches: (params = {}) => {
         this._defaults(params);
@@ -1262,7 +1262,7 @@ class FaceitAPI {
        * @param {String} params.tournament_id
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Object}
+       * @returns {Promise}
        */
       teams: (params = {}) => {
         this._defaults(params);
