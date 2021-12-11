@@ -16,7 +16,11 @@
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --check **/*.js",
     "prettier:fix": "prettier --write **/*.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "release": "standard-version",
+    "release:minor": "standard-version --release-as minor",
+    "release:patch": "standard-version --release-as patch",
+    "release:major": "standard-version --release-as major"
   },
   "repository": {
     "type": "git",
@@ -42,7 +46,8 @@
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-security": "^1.4.0",
     "husky": "^7.0.0",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "standard-version": "^9.3.2"
   },
   "dependencies": {
     "@commitlint/cli": "^15.0.0",
