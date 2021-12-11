@@ -24,7 +24,7 @@ npm i @cstools-app/faceit-wrapper
 
 ```javascript
 // Import the faceit-wrapper library
-const FaceitAPI = require('@cstools-app/faceit-wrapper');
+import FaceitAPI  from '@cstools-app/faceit-wrapper'
 
 // Initiate the client
 const client = new FaceitAPI(api-key);
@@ -68,7 +68,7 @@ METHOD:: championships.show({championship_id: <id>, <params>})
 
 Params are automatically split into wildcards & query
 
-Include the params as listed on the Faceit [documentation](https://developers.faceit.com/docs/tools/data-api) per route
+Include the params and queries as listed on the Faceit [documentation](https://developers.faceit.com/docs/tools/data-api) per route
 
 ## • License
 
