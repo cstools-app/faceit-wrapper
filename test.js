@@ -1,7 +1,9 @@
-require('dotenv').config();
-const test = require('ava');
+import dotenv from 'dotenv';
+dotenv.config();
 
-const FaceitAPI = require('.');
+import test from 'ava';
+
+import FaceitAPI from './index.js';
 
 const playerName = 'DotJar';
 const playerID = 'cf5c2089-b4a6-4201-a69b-9fd608429c79';

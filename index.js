@@ -1,1 +1,3 @@
-module.exports = require('./src');
+import FaceitWrapper from './src/index.js';
+
+export default FaceitWrapper;

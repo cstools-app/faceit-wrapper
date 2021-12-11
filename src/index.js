@@ -1,8 +1,8 @@
-const fetch = require('isomorphic-unfetch');
-const _ = require('lodash');
+import fetch from 'isomorphic-unfetch';
+import _ from 'lodash';
 
-const Utils = require('./helpers/utils');
-const Constants = require('./helpers/constants');
+import Utils from './helpers/utils.js';
+import Constants from './helpers/constants.js';
 
 // TODO:: Request returns promise, update comments
 
@@ -32,14 +32,16 @@ class FaceitAPI {
 
     return {
       /**
+       * @function championships.all
        * @description Retrieve all championships of a game
-       * @function championships.all()
+       *
        * @param {Object} params
        * @param {String} params.game
        * @param {String} params.type
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       all: (params = {}) => {
         this._defaults(params);
@@ -54,12 +56,14 @@ class FaceitAPI {
       },
 
       /**
+       * @function championships.show
        * @description Retrieve championship details
-       * @function championships.show()
+       *
        * @param {Object} params
        * @param {String} params.championship_id
-       * @param {Array[String]} params.expanded
-       * @returns {Promise}
+       * @param {String[]} params.expanded
+       *
+       * @return {Promise}
        */
       show: (params = {}) => {
         this._defaults(params);
@@ -76,14 +80,16 @@ class FaceitAPI {
       },
 
       /**
+       * @function championships.matches
        * @description Retrieve all matches of a championship
-       * @function championships.matches()
+       *
        * @param {Object} params
        * @param {String} params.championship_id
        * @param {String} params.type
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       matches: (params = {}) => {
         this._defaults(params);
@@ -100,14 +106,16 @@ class FaceitAPI {
       },
 
       /**
+       * @function championships.subscriptions
        * @description Retrieve all subscriptions of a championship
-       * @function championships.subscriptions()
+       *
        * @param {Object} params
        * @param {String} params.championship_id
        * @param {String} params.type
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       subscriptions: (params = {}) => {
         this._defaults(params);
@@ -133,12 +141,14 @@ class FaceitAPI {
 
     return {
       /**
+       * @function games.all
        * @description Retrieve details of all games on FACEIT
-       * @function games.all()
+       *
        * @param {Object} params
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       all: (params = {}) => {
         this._defaults(params);
@@ -150,11 +160,13 @@ class FaceitAPI {
       },
 
       /**
+       * @function games.show
        * @description Retrieve game details
-       * @function games.show()
+       *
        * @param {Object} params
        * @param {String} params.game_id
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       show: (params = {}) => {
         this._defaults(params);
@@ -169,11 +181,13 @@ class FaceitAPI {
       },
 
       /**
+       * @function games.parent
        * @description Retrieve the details of the parent game, if the game is region-specific
-       * @function games.parent()
+       *
        * @param {Object} params
        * @param {String} params.game_id
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       parent: (params = {}) => {
         this._defaults(params);
@@ -197,12 +211,14 @@ class FaceitAPI {
 
     return {
       /**
+       * @function hubs.show
        * @description Retrieve hub details
-       * @function hubs.show()
+       *
        * @param {Object} params
        * @param {String} params.hub_id
-       * @param {Array[String]} params.expanded
-       * @returns {Promise}
+       * @param {String[]} params.expanded
+       *
+       * @return {Promise}
        */
       show: (params = {}) => {
         this._defaults(params);
@@ -219,14 +235,16 @@ class FaceitAPI {
       },
 
       /**
-       * @description REtrieve all matches of a hub
-       * @function hubs.matches()
+       * @function hubs.matches
+       * @description Retrieve all matches of a hub
+       *
        * @param {Object} params
        * @param {String} params.hub_id
        * @param {String} params.type
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       matches: (params = {}) => {
         this._defaults(params);
@@ -243,13 +261,15 @@ class FaceitAPI {
       },
 
       /**
-       * @description REtrieve all members of a hub
-       * @function hubs.members()
+       * @function hubs.members
+       * @description Retrieve all members of a hub
+       *
        * @param {Object} params
        * @param {String} params.hub_id
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       members: (params = {}) => {
         this._defaults(params);
@@ -266,13 +286,15 @@ class FaceitAPI {
       },
 
       /**
+       * @function hubs.roles
        * @description Retrieve all roles members can have in a hub
-       * @function hubs.roles()
+       *
        * @param {Object} params
        * @param {String} params.hub_id
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       roles: (params = {}) => {
         this._defaults(params);
@@ -289,11 +311,13 @@ class FaceitAPI {
       },
 
       /**
+       * @function hubs.rules
        * @description Retrieve rules of a hub
-       * @function hubs.rules()
+       *
        * @param {Object} params
        * @param {String} params.hub_id
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       rules: (params = {}) => {
         this._defaults(params);
@@ -307,14 +331,16 @@ class FaceitAPI {
         return this._request(url);
       },
 
-      /** Retrieve statistics of a hub
-       * @description
-       * @function hubs.stats()
+      /**
+       * @function hubs.stats
+       * @description Retrieve statistics of a hub
+       *
        * @param {Object} params
        * @param {String} params.hub_id
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       stats: (params = {}) => {
         this._defaults(params);
@@ -346,13 +372,15 @@ class FaceitAPI {
       get championships() {
         return {
           /**
+           * @function leaderboards.championships.show
            * @description Retrieve all leaderboards of a championship
-           * @function leaderboards.championships.show()
+           *
            * @param {Object} params
            * @param {String} params.championship_id
            * @param {Number} params.offset
            * @param {Number} params.limit
-           * @returns {Promise}
+           *
+           * @return {Promise}
            */
           show: (params = {}) => {
             this._defaults(params);
@@ -369,14 +397,16 @@ class FaceitAPI {
           },
 
           /**
+           * @function leaderboards.championships.group
            * @description Retrieve group ranking of a championship
-           * @function leaderboards.championships.group()
+           *
            * @param {Object} params
            * @param {String} params.championship_id
            * @param {String} params.group_id
            * @param {Number} params.offset
            * @param {Number} params.limit
-           * @returns {Promise}
+           *
+           * @return {Promise}
            */
           group: (params = {}) => {
             this._defaults(params);
@@ -400,13 +430,15 @@ class FaceitAPI {
       get hubs() {
         return {
           /**
+           * @function leaderboards.hubs.show
            * @description Retrieve all leaderboards of a hub
-           * @function leaderboards.hubs.show()
+           *
            * @param {Object} params
            * @param {String} params.hub_id
            * @param {Number} params.offset
            * @param {Number} params.limit
-           * @returns {Promise}
+           *
+           * @return {Promise}
            */
           show: (params = {}) => {
             this._defaults(params);
@@ -423,13 +455,15 @@ class FaceitAPI {
           },
 
           /**
+           * @function leaderboards.hubs.general
            * @description Retrieve all time ranking of a hub
-           * @function leaderboards.hubs.general()
+           *
            * @param {Object} params
            * @param {String} params.hub_id
            * @param {Number} params.offset
            * @param {Number} params.limit
-           * @returns {Promise}
+           *
+           * @return {Promise}
            */
           general: (params = {}) => {
             this._defaults(params);
@@ -446,14 +480,16 @@ class FaceitAPI {
           },
 
           /**
+           * @function leaderboards.hubs.season
            * @description Retrieve seasonal ranking of a hub
-           * @function leaderboards.hubs.season()
+           *
            * @param {Object} params
            * @param {String} params.hub_id
            * @param {String} params.season_id
            * @param {Number} params.offset
            * @param {Number} params.limit
-           * @returns {Promise}
+           *
+           * @return {Promise}
            */
           season: (params = {}) => {
             this._defaults(params);
@@ -475,14 +511,16 @@ class FaceitAPI {
       },
 
       /**
+       * @function leaderboards.show
        * @description Retrieve ranking from a leaderboard id
-       * @function leaderboards.show()
+       *
        * @param {Object} params
        * @param {String} params.leaderboard_id
-       * @param {Array[String]} params.expanded
+       * @param {String[]} params.expanded
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       show: (params = {}) => {
         this._defaults(params);
@@ -508,11 +546,13 @@ class FaceitAPI {
 
     return {
       /**
+       * @function matches.show
        * @description Retrieve match details
-       * @function matches.show()
+       *
        * @param {Object} params
        * @param {String} params.match_id
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       show: (params = {}) => {
         this._defaults(params);
@@ -527,11 +567,13 @@ class FaceitAPI {
       },
 
       /**
+       * @function matches.stats
        * @description Retrieve statistics of a match
-       * @function matches.stats()
+       *
        * @param {Object} params
        * @param {String} params.match_id
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       stats: (params = {}) => {
         this._defaults(params);
@@ -555,11 +597,13 @@ class FaceitAPI {
 
     return {
       /**
+       * @function organizers.get
        * @description Retrieve organizer details from name
-       * @function organizers.get()
+       *
        * @param {Object} params
        * @param {String} params.name
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       get: (params = {}) => {
         this._defaults(params);
@@ -574,11 +618,13 @@ class FaceitAPI {
       },
 
       /**
+       * @function organizers.show
        * @description Retrieve organizer details
-       * @function organizers.show()
+       *
        * @param {Object} params
        * @param {String} params.organizer_id
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       show: (params = {}) => {
         this._defaults(params);
@@ -593,13 +639,15 @@ class FaceitAPI {
       },
 
       /**
+       * @function organizers.championships
        * @description Retrieve all championships of an organizer
-       * @function organizers.championships()
+       *
        * @param {Object} params
        * @param {String} params.organizer_id
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       championships: (params = {}) => {
         this._defaults(params);
@@ -616,13 +664,15 @@ class FaceitAPI {
       },
 
       /**
+       * @function organizers.games
        * @description Retrieve all games an organizer is involved with
-       * @function organizers.games()
+       *
        * @param {Object} params
        * @param {String} params.organizer_id
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       games: (params = {}) => {
         this._defaults(params);
@@ -637,13 +687,15 @@ class FaceitAPI {
       },
 
       /**
+       * @function organizers.hubs
        * @description Retrieve all hubs of an organizer
-       * @function organizers.hubs()
+       *
        * @param {Object} params
        * @param {String} params.organizer_id
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       hubs: (params = {}) => {
         this._defaults(params);
@@ -660,14 +712,16 @@ class FaceitAPI {
       },
 
       /**
+       * @function organizers.tournaments
        * @description Retrieve all tournaments of an organizer
-       * @function organizers.tournaments()
+       *
        * @param {Object} params
        * @param {String} params.organizer_id
        * @param {String} params.type
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       tournaments: (params = {}) => {
         this._defaults(params);
@@ -693,13 +747,15 @@ class FaceitAPI {
 
     return {
       /**
+       * @function players.get
        * @description Retrieve player details
-       * @function players.get()
+       *
        * @param {Object} params
        * @param {String} params.nickname
        * @param {String} params.game
        * @param {String} params.game_player_id
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       get: (params = {}) => {
         this._defaults(params);
@@ -711,11 +767,13 @@ class FaceitAPI {
       },
 
       /**
+       * @function players.show
        * @description Retrieve player details
-       * @function players.show()
+       *
        * @param {Object} params
        * @param {String} params.player_id
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       show: (params = {}) => {
         this._defaults(params);
@@ -730,8 +788,9 @@ class FaceitAPI {
       },
 
       /**
+       * @function players.history
        * @description Retrieve all matches of a player
-       * @function players.history()
+       *
        * @param {Object} params
        * @param {String} params.player_id
        * @param {String} params.game
@@ -739,7 +798,8 @@ class FaceitAPI {
        * @param {Number} params.to
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       history: (params = {}) => {
         this._defaults(params);
@@ -760,13 +820,15 @@ class FaceitAPI {
       },
 
       /**
+       * @function players.hubs
        * @description Retrieve all hubs of a player
-       * @function players.hubs()
+       *
        * @param {Object} params
        * @param {String} params.player_id
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       hubs: (params = {}) => {
         this._defaults(params);
@@ -783,12 +845,14 @@ class FaceitAPI {
       },
 
       /**
+       * @function organizers.stats
        * @description Retrieve statistics of a player
-       * @function organizers.stats()
+       *
        * @param {Object} params
        * @param {String} params.player_id
        * @param {String} params.game_id
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       stats: (params = {}) => {
         this._defaults(params);
@@ -806,13 +870,15 @@ class FaceitAPI {
       },
 
       /**
+       * @function players.tournaments
        * @description Retrieve all tournaments of a player
-       * @function players.tournaments()
+       *
        * @param {Object} params
        * @param {String} params.player_id
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       tournaments: (params = {}) => {
         this._defaults(params);
@@ -838,15 +904,17 @@ class FaceitAPI {
 
     return {
       /**
+       * @function rankings.game
        * @description Retrieve global ranking of a game
-       * @function rankings.game()
+       *
        * @param {Object} params
        * @param {String} params.game_id
        * @param {String} params.region
        * @param {String} params.country
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       game: (params = {}) => {
         this._defaults(params);
@@ -870,15 +938,17 @@ class FaceitAPI {
       },
 
       /**
+       * @function rankings.player
        * @description Retrieve user position in the global ranking of a game
-       * @function rankings.player()
+       *
        * @param {Object} params
        * @param {String} params.game_id
        * @param {String} params.region
        * @param {String} params.player_id
        * @param {String} params.country
        * @param {Number} params.limit
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       player: (params = {}) => {
         this._defaults(params);
@@ -914,8 +984,9 @@ class FaceitAPI {
 
     return {
       /**
+       * @function search.championships
        * @description Search for championships
-       * @function search.championships()
+       *
        * @param {Object} params
        * @param {String} params.name
        * @param {String} params.game
@@ -923,7 +994,8 @@ class FaceitAPI {
        * @param {String} params.type
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       championships: (params = {}) => {
         this._defaults(params);
@@ -946,15 +1018,17 @@ class FaceitAPI {
       },
 
       /**
+       * @function search.hubs
        * @description Search for hubs
-       * @function search.hubs()
+       *
        * @param {Object} params
        * @param {String} params.name
        * @param {String} params.game
        * @param {String} params.region
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       hubs: (params = {}) => {
         this._defaults(params);
@@ -977,13 +1051,15 @@ class FaceitAPI {
       },
 
       /**
+       * @function search.organizers
        * @description Search for organizers
-       * @function search.organizers()
+       *
        * @param {Object} params
        * @param {String} params.name
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       organizers: (params = {}) => {
         this._defaults(params);
@@ -1000,15 +1076,17 @@ class FaceitAPI {
       },
 
       /**
+       * @function search.players
        * @description Search for players
-       * @function search.players()
+       *
        * @param {Object} params
        * @param {String} params.nickname
        * @param {String} params.game
        * @param {String} params.country
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       players: (params = {}) => {
         this._defaults(params);
@@ -1032,14 +1110,16 @@ class FaceitAPI {
       },
 
       /**
+       * @function search.teams
        * @description Search for teams
-       * @function search.teams()
+       *
        * @param {Object} params
        * @param {String} params.nickname
        * @param {String} params.game
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       teams: (params = {}) => {
         this._defaults(params);
@@ -1059,8 +1139,9 @@ class FaceitAPI {
       },
 
       /**
+       * @function search.tournaments
        * @description Search for tournaments
-       * @function search.tournaments()
+       *
        * @param {Object} params
        * @param {String} params.name
        * @param {String} params.game
@@ -1068,7 +1149,8 @@ class FaceitAPI {
        * @param {String} params.type
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       tournaments: (params = {}) => {
         this._defaults(params);
@@ -1100,11 +1182,13 @@ class FaceitAPI {
 
     return {
       /**
+       * @function teams.show
        * @description Retrieve team details
-       * @function teams.show()
+       *
        * @param {Object} params
        * @param {String} params.team_id
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       show: (params = {}) => {
         this._defaults(params);
@@ -1119,12 +1203,14 @@ class FaceitAPI {
       },
 
       /**
+       * @function teams.stats
        * @description Retrieve statistics of a team
-       * @function teams.stats()
+       *
        * @param {Object} params
        * @param {String} params.team_id
        * @param {String} params.game_id
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       stats: (params = {}) => {
         this._defaults(params);
@@ -1141,12 +1227,14 @@ class FaceitAPI {
       },
 
       /**
+       * @function teams.tournaments
        * @description Retrieve tournaments of a team
-       * @function teams.tournaments()
+       *
        * @param {Object} params
        * @param {String} params.team_id
        * @param {String} params.game_id
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       tournaments: (params = {}) => {
         this._defaults(params);
@@ -1172,14 +1260,17 @@ class FaceitAPI {
 
     return {
       /**
+       * @function tournaments.get
        * @description Retrieve tournaments v1 ( no longer used)
-       * @function tournaments.get()
+       * @deprecated
+       *
        * @param {Object} params
        * @param {String} params.game
        * @param {String} params.region
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       get: (params = {}) => {
         this._defaults(params);
@@ -1191,12 +1282,14 @@ class FaceitAPI {
       },
 
       /**
+       * @function tournaments.show
        * @description Retrieve tournament details
-       * @function tournaments.show()
+       *
        * @param {Object} params
        * @param {String} params.tournament_id
-       * @param {Array[String]} params.expanded
-       * @returns {Promise}
+       * @param {String[]} params.expanded
+       *
+       * @return {Promise}
        */
       show: (params = {}) => {
         this._defaults(params);
@@ -1213,11 +1306,13 @@ class FaceitAPI {
       },
 
       /**
+       * @function tournaments.brackets
        * @description Retrieve brackets of a tournament
-       * @function tournaments.brackets()
+       *
        * @param {Object} params
        * @param {String} params.tournament_id
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       brackets: (params = {}) => {
         this._defaults(params);
@@ -1232,13 +1327,15 @@ class FaceitAPI {
       },
 
       /**
+       * @function tournaments.brackets
        * @description Retrieve all matches of a tournament
-       * @function tournaments.brackets()
+       *
        * @param {Object} params
        * @param {String} params.tournament_id
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       matches: (params = {}) => {
         this._defaults(params);
@@ -1255,13 +1352,15 @@ class FaceitAPI {
       },
 
       /**
+       * @function tournaments.teams
        * @description Retrieve all teams of a tournament
-       * @function tournaments.teams()
+       *
        * @param {Object} params
        * @param {String} params.tournament_id
        * @param {Number} params.offset
        * @param {Number} params.limit
-       * @returns {Promise}
+       *
+       * @return {Promise}
        */
       teams: (params = {}) => {
         this._defaults(params);
@@ -1280,12 +1379,14 @@ class FaceitAPI {
   }
 
   /**
+   * @function _defaults
    * @description Checks the default parameters
-   * @function _defaults()
+   *
    * @param {Object} params
    * @param {Number} params.offset
    * @param {Number} params.limit
-   * @returns {Object}
+   *
+   * @return {void}
    */
   _defaults(params) {
     // Must be Object
@@ -1304,11 +1405,12 @@ class FaceitAPI {
   }
 
   /**
+   * @function _buildQuery
    * @description Formats Object into http query
-   * @function _buildQuery()
-   * @param {String} url
+   *
    * @param {Object} query
-   * @returns {String}
+   *
+   * @return {String}
    */
   _buildQuery(query) {
     return Object.entries(query)
@@ -1317,11 +1419,13 @@ class FaceitAPI {
   }
 
   /**
+   * @function _buildQuery
    * @description Formats endpoint and params into a url
-   * @function _buildQuery()
+   *
    * @param {String} endpoint
    * @param {Object} params
-   * @returns {String}
+   *
+   * @return {String}
    */
   _buildUrl(endpoint, params) {
     const query = this._buildQuery(params);
@@ -1331,11 +1435,13 @@ class FaceitAPI {
   }
 
   /**
+   * @function _request
    * @description Sends request to api
-   * @function _request()
+   *
    * @param {String} url
    * @param {Object} options
-   * @returns {Promise}
+   *
+   * @return {Promise}
    */
   _request(url, options) {
     const key = this.apiKey;
@@ -1361,4 +1467,4 @@ class FaceitAPI {
 
 FaceitAPI.BASEURL = Constants.BaseURL;
 
-module.exports = FaceitAPI;
+export default FaceitAPI;
