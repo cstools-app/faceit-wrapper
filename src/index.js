@@ -11,7 +11,7 @@ import Constants from './helpers/constants.js';
  * @author Demian <devaccdemiann@gmail.com>
  * @description A Node.js faceit-wrapper for the faceit data api with only two dependencies. For more accurate and up to date documentation visit https://developers.faceit.com/docs/tools/data-api
  * @example
- *     const FaceitAPI = require('@cstools-app/faceit-wrapper');
+ *     import FaceitAPI from '@cstools-app/faceit-wrapper'
  *     const client = new FaceitAPI();
  * @public
  * @license MIT
