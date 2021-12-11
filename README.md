@@ -27,7 +27,7 @@ npm i @cstools-app/faceit-wrapper
 const FaceitAPI = require('@cstools-app/faceit-wrapper');
 
 // Initiate the client
-const client = new FaceitAPI();
+const client = new FaceitAPI(<your-api-key>);
 
 // Create a function that searches for a player
 const get = async () => {
