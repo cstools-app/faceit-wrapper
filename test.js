@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import fetch from 'isomorphic-unfetch';
 dotenv.config();
 
 import test from 'ava';
@@ -16,7 +17,7 @@ const { FACEIT_TOKEN } = process.env;
 
 // For now test randomly selected that cover most use cases
 test('Search players from steamID', async (t) => {
-  const client = new FaceitAPI(FACEIT_TOKEN);
+  const client = new FaceitAPI(FACEIT_TOKEN, fetch);
   const res = await client.search.players({ nickname: steamID, game: 'csgo', country: 'nl' });
 
   t.assert(res.items[0] !== undefined);
@@ -28,7 +29,7 @@ test('Search players from steamID', async (t) => {
 });
 
 test('Search players returns correct profile', async (t) => {
-  const client = new FaceitAPI(FACEIT_TOKEN);
+  const client = new FaceitAPI(FACEIT_TOKEN, fetch);
   const res = await client.search.players({ nickname: playerName, game: 'csgo', country: 'nl' });
 
   t.assert(res.items[0] !== undefined);
@@ -42,7 +43,7 @@ test('Search players returns correct profile', async (t) => {
 test('Get History of a player', async (t) => {
   const limit = 5;
 
-  const client = new FaceitAPI(FACEIT_TOKEN);
+  const client = new FaceitAPI(FACEIT_TOKEN, fetch);
   const res = await client.players.history({ player_id: playerID, game: 'csgo', limit });
 
   t.assert(res.items[0] !== undefined);
@@ -59,7 +60,7 @@ test('Get History of a player', async (t) => {
 });
 
 test('Supply incorrect types on params', async (t) => {
-  const client = new FaceitAPI(FACEIT_TOKEN);
+  const client = new FaceitAPI(FACEIT_TOKEN, fetch);
   try {
     client.players.history({ player_id: playerID, game: 'csgo', limit: 'se5drftuyhionjkm' });
   } catch (e) {
@@ -69,7 +70,7 @@ test('Supply incorrect types on params', async (t) => {
 });
 
 test('Dont include required params throws errors', async (t) => {
-  const client = new FaceitAPI(FACEIT_TOKEN);
+  const client = new FaceitAPI(FACEIT_TOKEN, fetch);
   try {
     await client.players.history();
   } catch (e) {

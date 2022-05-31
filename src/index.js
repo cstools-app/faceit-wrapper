@@ -1,4 +1,3 @@
-import fetch from 'isomorphic-unfetch';
 import _ from 'lodash';
 
 import Utils from './helpers/utils.js';
@@ -19,9 +18,13 @@ import Constants from './helpers/constants.js';
 class FaceitAPI {
   /**
    * @param {String} apiKey Authorization key
+   * @param {function} fetch Make sure to supply a fetch, I suggest isomorphic-unfetch
+   *
+   * @example Cloudflare workers example fetch = (...args) => fetch(...args)
    */
-  constructor(apiKey) {
+  constructor(apiKey, fetch) {
     this.apiKey = apiKey;
+    this.fetch = fetch;
   }
 
   /**
@@ -1455,7 +1458,7 @@ class FaceitAPI {
         reject(new TypeError('api key must be supplied'));
       }
 
-      fetch(url, { ...options, headers })
+      this.fetch(url, { ...options, headers })
         .then((res) => res.json())
         .then((json) => {
           resolve(json);

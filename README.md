@@ -7,8 +7,6 @@
 
 ## • Description / Information
 
-Package uses 2 dependencies [isomorphic-unfetch](https://www.npmjs.com/package/isomorphic-unfetch) and [lodash](https://www.npmjs.com/package/lodash).
-
 Still need to write more documentation and tests for this
 
 Check the [documentation](https://developers.faceit.com/docs/tools/data-api)
@@ -20,14 +18,24 @@ for up to date information
 npm i @cstools-app/faceit-wrapper
 ```
 
+You'll also need a fetch method I suggest [isomorphic-unfetch](https://www.npmjs.com/package/isomorphic-unfetch) or [cross-fetch](https://www.npmjs.com/package/cross-fetch)
+
+Why do you need to supply a fetch method?
+This way people can use their own prefered way, it also means this can work in a serverless environment like cloudflare workers.
+
+```bash
+npm i isomorphic-unfetch
+```
+
 ## • Quick Start Example
 
 ```javascript
+import fetch from 'isomorphic-unfetch';
 // Import the faceit-wrapper library
-import FaceitAPI  from '@cstools-app/faceit-wrapper'
+import FaceitAPI from '@cstools-app/faceit-wrapper';
 
 // Initiate the client
-const client = new FaceitAPI(api-key);
+const client = new FaceitAPI(api_key, fetch);
 
 // Create a function that searches for a player
 const get = async () => {
