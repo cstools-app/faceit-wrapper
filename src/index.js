@@ -1403,7 +1403,7 @@ class FaceitAPI {
       throw new TypeError('expanded must be of type: Array[String]');
 
     // If exists be String
-    if ('offset' in params && !Utils.isNumber(params.type)) throw new TypeError('offset must be of type: Number');
+    if ('offset' in params && !Utils.isNumber(params.offset)) throw new TypeError('offset must be of type: Number');
     if ('limit' in params && !Utils.isNumber(params.limit)) throw new TypeError('limit must be of type: Number');
   }
 
