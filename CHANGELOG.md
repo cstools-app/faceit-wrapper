@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/cstools-app/faceit-wrapper/compare/v1.0.0...v1.0.1) (2022-09-27)
+
+
+### Bug Fixes
+
+* offset should be checked instead of type ([3811f79](https://github.com/cstools-app/faceit-wrapper/commits/3811f79feeb6bdbd5cd1f6a1082fac36655e616f))
+
 ## [1.0.0](https://github.com/cstools-app/faceit-wrapper/compare/v0.0.3...v1.0.0) (2022-05-31)
 
 
